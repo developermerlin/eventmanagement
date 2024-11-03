@@ -31,4 +31,12 @@ urlpatterns = [
     path('edit_venue/<int:venue_id>/', views.edit_venue, name='edit_venue'),
     path('delete_venue/<int:venue_id>/', views.delete_venue, name='delete_venue'),
     path('view_venue/<int:venue_id>/', views.view_venue, name='view_venue'),
+
+    path('booking_venue/', views.booking_venue, name='booking_venue'),
+    path('booking_venue/edit/<int:booking_venue_id>/', views.edit_booking_venue, name='edit_booking_venue'),
+    path('booking_venue/delete/<int:booking_venue_id>/', views.delete_booking_venue, name='delete_booking_venue'),
+
+    path('available_venue/', views.available_venue, name='available_venue'),
+
+
 ]

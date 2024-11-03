@@ -80,146 +80,6 @@
               </a>
             </div>
 
-            <!-- begin sidebar scrollbar -->
-            <div class="" data-simplebar style="height: 100%; margin-top: -20px;">
-              <!-- sidebar menu -->
-              <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
-                    aria-expanded="false" aria-controls="dashboard">
-                    <i class="mdi mdi-view-dashboard-outline"></i>
-                    <span class="nav-text">Dashboard</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="dashboard" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'dashboard' %}">
-                          <span class="nav-text">Dashboard</span>
-                        </a>
-                      </li>
-
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-                    aria-expanded="false" aria-controls="app">
-                    <i class="mdi mdi-pencil-box-multiple"></i>
-                    <span class="nav-text">Events</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="app" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'event' %}">
-                          <span class="nav-text">All Events</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons1"
-                    aria-expanded="false" aria-controls="icons">
-                    <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Dishes/Food</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="icons1" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'dish' %}">
-                          <span class="nav-text">Cost of Food</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components1"
-                    aria-expanded="false" aria-controls="components">
-                    <i class="mdi mdi-folder-multiple-outline"></i>
-                    <span class="nav-text">Entertainment</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="components1" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'entertainment' %}">
-                          <span class="nav-text">All Entertainment</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
-                    aria-expanded="false" aria-controls="components">
-                    <i class="mdi mdi-folder-multiple-outline"></i>
-                    <span class="nav-text">Venues</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="components" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'venue' %}">
-                          <span class="nav-text">All Venues</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-                    aria-expanded="false" aria-controls="icons">
-                    <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Bookings</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="icons" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="material-icon.html">
-                          <span class="nav-text">All Bookings</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#forms"
-                    aria-expanded="false" aria-controls="forms">
-                    <i class="mdi mdi-email-mark-as-unread"></i>
-                    <span class="nav-text">Notification</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="forms" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="basic-input.html">
-                          <span class="nav-text">All Notification</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-
                 <aside class="left-sidebar bg-sidebar" style="margin-top: -14px;">
                   <div id="sidebar" class="sidebar sidebar-with-footer">
                     <!-- Aplication Brand -->
@@ -427,23 +287,7 @@
                   </div>
                 </aside>
 
-                <li class="has-sub active expand">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tables"
-                    aria-expanded="false" aria-controls="tables">
-                    <i class="mdi mdi-table"></i>
-                    <span class="nav-text">Booking History</span> <b class="caret"></b>
-                  </a>
 
-                  <ul class="collapse show" id="tables" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="basic-tables.html">
-                          <span class="nav-text">Booking History</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
 
           </div>
         </aside>
@@ -520,15 +364,12 @@
 					<table id="basic-data-table" class="table nowrap" style="width:100%">
 						<thead>
 							<tr>
-								<th style="font-size: 16px;">No</th>
-                <th style="font-size: 16px;">Img</th>
-								<th style="font-size: 16px;">Venue Name</th>
-								<th style="font-size: 16px;">Event</th>
-                <th style="font-size: 16px;">Cost Per Day</th>
-                <!-- <th style="font-size: 16px;">Facilities</th> -->
-                <th style="font-size: 16px;">Address</th>
-                <th style="font-size: 16px;">Contact</th>
-								<th style="font-size: 16px;">Action</th>
+								<th style="font-size: 16px; text-align: center;">No</th>
+                <th style="font-size: 16px; text-align: center;">Img</th>
+								<th style="font-size: 16px; text-align: center;">Venue Name</th>
+                <th style="font-size: 16px; text-align: center;">Address</th>
+                <th style="font-size: 16px; text-align: center;">Contact</th>
+								<th style="font-size: 16px; text-align: center;">Action</th>
 								
 							</tr>
 						</thead>
@@ -536,7 +377,7 @@
 						<tbody>
                 {% for venue in venues %}            
 							<tr style="font-size: 15px; color:rgb(45, 41, 41);">
-								<td>{{forloop.counter}}</td>
+								<td style="font-size: 18px;">{{forloop.counter}}</td>
 								<td>
                   {% if venue.profile %}
                   <img src="{{ venue.profile.url }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
@@ -544,12 +385,10 @@
                       No Image
                   {% endif %} 
                 </td>
-								<td>{{venue.venue_name}}</td>
-                <td>{{venue.venue_event}}</td>
-                <td>Nle{{venue.cost_per_day}}</td>
-                <td>{{venue.address}}</td>
-                <td>{{venue.contact}}</td>
-                <td>
+								<td style="font-size: 18px;">{{venue.venue_name}}</td>
+                <td style="font-size: 18px;">{{venue.address}}</td>
+                <td style="font-size: 18px;">{{venue.contact}}</td>
+                <td style="font-size: 18px;">
                   <a href="{% url 'edit_venue' venue.id %}" >
                     <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 20px;"></i>
                   </a>
@@ -597,7 +436,7 @@
                   {% csrf_token %}
                   <div class="container">
                       <div class="row">
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                             <!-- <label for="video">Upload Image:</label> -->
                             <input class="form-control shadow-none p-2" name="file" type="file" id="formFile">
                             <!-- Placeholder-like hint -->
@@ -605,96 +444,49 @@
                               
                           </div>
               
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                             <input type="file" name="video" class="form-control" id="video">
                             <!-- Placeholder-like hint -->
                             <small class="form-text text-muted">Please upload a video file (mp4, avi, etc.).</small>
                           </div>
 
 
-                          <div class="col-md-4">
-                            <input class="form-control shadow-none p-4" name="venue_name" type="text" placeholder="Venue name">
-                           
-                        </div>
-                      </div>
-              
-                      <div class="row mt-3">
-                          <div class="col-md-4">
-                            <select class="form-control shadow-none p-2" name="event" required>
-                              <option value="">Select Event</option>
-                              {% for event in events %}
-                                  <option value="{{ event.id }}">{{ event.event_name }}</option>
-                              {% endfor %}
-                          </select>
-                              <!-- Input for product name -->
-                              
-                          </div>
-              
-                          <div class="col-md-4">
-                              <!-- Input for stock number -->
-                              <input type="number" class="form-control shadow-none p-4" name="cost_per_day" placeholder="cost of venue (per Day) Nle" required>
-                          </div>
-
-                          <div class="col-md-4">
-                            <!-- Input for buying price -->
-                            <input type="text" class="form-control shadow-none p-4" name="address" placeholder="Address (Location of Venue)" required>
-                        </div>
-                      </div>
-              
-                      <div class="row mt-3">
                           
-                          <div class="col-md-4">
-                              <!-- Input for selling price -->
-                              <input type="number" class="form-control shadow-none p-4" name="contact" placeholder="contact" required>
-                          </div>
-
-                          <div class="col-md-4">
-                            <!-- Input for selling price -->
-                            <input type="number" class="form-control shadow-none p-4" name="cost_of_dj" placeholder="cost of Dj equipment (Nle)" required>
-                        </div>
-
-                        <div class="col-md-4">
-                          <!-- Input for selling price -->
-                          <input type="number" class="form-control shadow-none p-4" name="cost_of_salad" placeholder="food (Salad) per unit--Nle" required>
                       </div>
-                      </div>
-
-
+              
                       <div class="row mt-3">
-                          
-                        <div class="col-md-4">
-                            <!-- Input for selling price -->
-                            <input type="number" class="form-control shadow-none p-4" name="cost_of_shawama" placeholder="food (shawama) per unit--Nle" required>
-                        </div>
-
-                        <div class="col-md-4">
-                          <!-- Input for selling price -->
-                          <input type="number" class="form-control shadow-none p-4" name="cost_of_fried_rice" placeholder="food (Fried Rice) per unit--Nle" required>
+                        <div class="col-md-6">
+                          <input class="form-control shadow-none p-4" name="venue_name" type="text" placeholder="Venue name">
+                         
                       </div>
 
-                      <div class="col-md-4">
-                        <!-- Input for selling price -->
-                        <input type="number" class="form-control shadow-none p-4" name="cost_of_local_rice" placeholder="food (Local Rice) per unit -- Nle" required>
-                    </div>
-                    </div>
+                        <div class="col-md-6">
+                          <!-- Input for selling price -->
+                          <input type="number" class="form-control shadow-none p-4" name="contact" placeholder="contact" required>
+                      </div>
+    
+                      </div>
+
+                                
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <input type="text" class="form-control shadow-none p-4" name="address" placeholder="Address (Location of Venue)" required>
+                        </div>
+
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-success p-3 text-white w-100" >
+                          <i class="fas fa-database"></i> Add Venue
+                      </button>                    </div>
+                       </div>
+              
+                     
+
+                   
 
 
                     <div class="row mt-3">
-                          
-                      <div class="col-md-4">
-                          <!-- Input for selling price -->
-                          <input type="number" class="form-control shadow-none p-4" name="photography" placeholder="cost of photography (Nle)" required>
-                      </div>
-
-                      <div class="col-md-4">
-                        <!-- Input for selling price -->
-                        <input type="number" class="form-control shadow-none p-4" name="comedy" placeholder="cost of comedy (Nle)" required>
-                    </div>
-
-                    <div class="col-md-4">
-                      <button type="submit" class="btn btn-primary p-3 text-white" style="width: 350px;">
-                        <i class="fas fa-database"></i> Add Venue
-                    </button>
+                    <div class="col-md-6 offset-md-4">
+                     
                   </div>
                   </div>
                   </div>

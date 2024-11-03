@@ -62,7 +62,7 @@
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-              <a href="/index.html" title="Sleek Dashboard">
+              <a href="{% url 'dashboard' %}" title="Sleek Dashboard">
                 <svg
                   class="brand-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,151 +80,11 @@
               </a>
             </div>
 
-            <!-- begin sidebar scrollbar -->
-            <div class="" data-simplebar style="height: 100%; margin-top: -20px;">
-              <!-- sidebar menu -->
-              <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
-                    aria-expanded="false" aria-controls="dashboard">
-                    <i class="mdi mdi-view-dashboard-outline"></i>
-                    <span class="nav-text">Dashboard</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="dashboard" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'dashboard' %}">
-                          <span class="nav-text">Dashboard</span>
-                        </a>
-                      </li>
-
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-                    aria-expanded="false" aria-controls="app">
-                    <i class="mdi mdi-pencil-box-multiple"></i>
-                    <span class="nav-text">Events</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="app" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'event' %}">
-                          <span class="nav-text">All Events</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons1"
-                    aria-expanded="false" aria-controls="icons">
-                    <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Dishes/Food</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="icons1" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'dish' %}">
-                          <span class="nav-text">Cost of Food</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components1"
-                    aria-expanded="false" aria-controls="components">
-                    <i class="mdi mdi-folder-multiple-outline"></i>
-                    <span class="nav-text">Entertainment</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="components1" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'entertainment' %}">
-                          <span class="nav-text">All Entertainment</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
-                    aria-expanded="false" aria-controls="components">
-                    <i class="mdi mdi-folder-multiple-outline"></i>
-                    <span class="nav-text">Venues</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="components" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="{% url 'venue' %}">
-                          <span class="nav-text">All Venues</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-                    aria-expanded="false" aria-controls="icons">
-                    <i class="mdi mdi-diamond-stone"></i>
-                    <span class="nav-text">Bookings</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="icons" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="material-icon.html">
-                          <span class="nav-text">All Bookings</span>
-                        </a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                
-
-                <li class="has-sub ">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#forms"
-                    aria-expanded="false" aria-controls="forms">
-                    <i class="mdi mdi-email-mark-as-unread"></i>
-                    <span class="nav-text">Notification</span> <b class="caret"></b>
-                  </a>
-
-                  <ul class="collapse " id="forms" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="basic-input.html">
-                          <span class="nav-text">All Notification</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-
                 <aside class="left-sidebar bg-sidebar" style="margin-top: -14px;">
                   <div id="sidebar" class="sidebar sidebar-with-footer">
                     <!-- Aplication Brand -->
                     <div class="app-brand">
-                      <a href="{% url 'dashboard' %}" title="Sleek Dashboard">
+                      <a href="/index.html" title="Sleek Dashboard">
                         <svg
                           class="brand-icon"
                           xmlns="http://www.w3.org/2000/svg"
@@ -427,23 +287,7 @@
                   </div>
                 </aside>
 
-                <li class="has-sub active expand">
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tables"
-                    aria-expanded="false" aria-controls="tables">
-                    <i class="mdi mdi-table"></i>
-                    <span class="nav-text">Booking History</span> <b class="caret"></b>
-                  </a>
 
-                  <ul class="collapse show" id="tables" data-parent="#sidebar-menu">
-                    <div class="sub-menu">
-                      <li class="">
-                        <a class="sidenav-item-link" href="basic-tables.html">
-                          <span class="nav-text">Booking History</span>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
 
           </div>
         </aside>
