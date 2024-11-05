@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .models import Booking_Venue, Venue, Event, Dish, Entertainment, Photography, Drinks
+from .models import Booking_Venue, Venue, Event, Dish, Entertainment, Photography, Drinks,Book_Event
 from django.contrib import messages
 # Create your views here.
 
@@ -64,6 +64,7 @@ def venue(request):
         venue_name = request.POST.get('venue_name')
         address = request.POST.get('address')
         contact = request.POST.get('contact')
+        capacity = request.POST.get('capacity')
         profile = request.FILES.get('file')
         video = request.FILES.get('video')
         
@@ -72,6 +73,7 @@ def venue(request):
             venue_name=venue_name,
             address=address,
             contact=contact,
+            capacity=capacity,
             video=video,
             profile=profile
             )
@@ -88,6 +90,7 @@ def edit_venue(request, venue_id):
         venue_name = request.POST.get('venue_name')
         address = request.POST.get('address')
         contact = request.POST.get('contact')
+        capacity = request.POST.get('capacity')
         profile = request.FILES.get('file') if 'file' in request.FILES else venue.profile
         video = request.FILES.get('video') if 'video' in request.FILES else venue.video
 
@@ -95,6 +98,7 @@ def edit_venue(request, venue_id):
         venue.venue_name = venue_name
         venue.address = address 
         venue.contact = contact 
+        venue.capacity = capacity 
         venue.profile = profile
         venue.video = video
         venue.save()
@@ -523,3 +527,292 @@ def available_venue(request):
         'booking_venues':booking_venues,
     }
     return render(request, 'available_venue.html', context)
+
+
+
+def available_venue_details(request, pk):
+    # Retrieve the specific Booking_Venue instance by primary key (ID)
+    booking_venue = get_object_or_404(Booking_Venue, pk=pk)
+    
+    # Pass the instance to the template context
+    context = {
+        'booking_venue': booking_venue,
+    }
+    return render(request, 'available_venue_details.html', context)
+
+def booking_history(request):
+    book_events = Book_Event.objects.all()  # Retrieve all bookings
+    context = {
+        'book_events': book_events,
+    }
+    return render(request, 'booking_history.html', context)
+
+
+
+
+def book_event(request):
+    if request.method == 'POST':
+        venue_name_id = request.POST.get('venue_name')
+        customer = request.POST.get('customer')
+        customer_contact = request.POST.get('customer_contact')
+        event_id = request.POST.get('event')
+        date = request.POST.get('date')
+        number_of_guests = int(request.POST.get('number_of_guests'))
+
+        # Fetch selected item IDs, setting them to None if not provided
+        dish1_id = request.POST.get('dish1') or None
+        dish2_id = request.POST.get('dish2') or None
+        dish3_id = request.POST.get('dish3') or None
+        entertainment1_id = request.POST.get('entertainment1') or None
+        entertainment2_id = request.POST.get('entertainment2') or None
+        entertainment3_id = request.POST.get('entertainment3') or None
+        photography_id = request.POST.get('photography') or None
+        drinks1_id = request.POST.get('drinks1') or None
+        drinks2_id = request.POST.get('drinks2') or None
+        drinks3_id = request.POST.get('drinks3') or None
+        drinks4_id = request.POST.get('drinks4') or None
+
+        # Initialize costs
+        total_dishes_cost = 0
+        total_drinks_cost = 0
+        total_entertainment_cost = 0
+        total_photography_cost = 0
+
+        # Calculating total cost for dishes
+        for dish_id in [dish1_id, dish2_id, dish3_id]:
+            if dish_id:
+                dish_cost = Dish.objects.get(id=dish_id).cost_of_dish
+                total_dishes_cost += dish_cost * number_of_guests
+
+        # Calculating total cost for drinks
+        for drink_id in [drinks1_id, drinks2_id, drinks3_id, drinks4_id]:
+            if drink_id:
+                drink_cost = Drinks.objects.get(id=drink_id).drinks_cost
+                total_drinks_cost += drink_cost * number_of_guests
+
+        # Calculating total cost for entertainment
+        for entertainment_id in [entertainment1_id, entertainment2_id, entertainment3_id]:
+            if entertainment_id:
+                entertainment_cost = Entertainment.objects.get(id=entertainment_id).entertainment_cost
+                total_entertainment_cost += entertainment_cost
+
+        # Calculating total cost for photography
+        if photography_id:
+            total_photography_cost = Photography.objects.get(id=photography_id).photography_cost
+
+        # Calculate venue cost
+        booking_venue = Booking_Venue.objects.get(id=venue_name_id)
+        venue_cost = booking_venue.cost_per_day
+
+        # Calculate grand total using the defined logic
+        grand_total = (
+            total_dishes_cost + 
+            total_drinks_cost + 
+            total_entertainment_cost + 
+            total_photography_cost + 
+            venue_cost
+        )
+
+        # Create the Book_Event instance with status set to 'pending'
+        book_event = Book_Event.objects.create(
+            venue_name_id=venue_name_id,
+            customer=customer,
+            customer_contact=customer_contact,
+            number_of_guests=number_of_guests,
+            date=date,
+            dish1_id=dish1_id,
+            dish2_id=dish2_id,
+            dish3_id=dish3_id,
+            entertainment1_id=entertainment1_id,
+            entertainment2_id=entertainment2_id,
+            entertainment3_id=entertainment3_id,
+            photography_id=photography_id,
+            drinks1_id=drinks1_id,
+            drinks2_id=drinks2_id,
+            drinks3_id=drinks3_id,
+            drinks4_id=drinks4_id,
+            status='pending',  # Set default status to pending
+        )
+
+        # Add a success message
+        messages.success(request, f"Booking Venue has been successfully created! Grand Total: {grand_total:.2f}")
+
+        return redirect('booking_history')  # Redirect after successful creation
+
+    # Query related models for dropdown values
+    venues = Venue.objects.all()
+    events = Event.objects.all()
+    dishes = Dish.objects.all()
+    entertainments = Entertainment.objects.all()
+    photographies = Photography.objects.all()
+    drinks = Drinks.objects.all()
+
+    # Passing querysets to template
+    context = {
+        'venues': venues,
+        'events': events,
+        'dishes': dishes,
+        'entertainments': entertainments,
+        'photographies': photographies,
+        'drinks': drinks,
+    }
+    return render(request, 'book_event.html', context)
+
+
+def booking_history_details(request, pk):
+    # Retrieve the specific Book_Event instance by primary key (ID)
+    booking_history = get_object_or_404(Book_Event, pk=pk)
+
+    # Calculate the total costs based on selected items in Book_Event
+    number_of_guests = booking_history.number_of_guests
+    total_dishes_cost = sum(
+        (dish.cost_of_dish * number_of_guests) for dish in [
+            booking_history.dish1, 
+            booking_history.dish2, 
+            booking_history.dish3
+        ] if dish
+    )
+    
+    total_drinks_cost = sum(
+        (drink.drinks_cost * number_of_guests) for drink in [
+            booking_history.drinks1, 
+            booking_history.drinks2, 
+            booking_history.drinks3, 
+            booking_history.drinks4
+        ] if drink
+    )
+
+    total_entertainment_cost = sum(
+        entertainment.entertainment_cost for entertainment in [
+            booking_history.entertainment1, 
+            booking_history.entertainment2, 
+            booking_history.entertainment3
+        ] if entertainment
+    )
+    
+    total_photography_cost = booking_history.photography.photography_cost if booking_history.photography else 0
+    venue_cost = booking_history.venue_name.cost_per_day  # Cost per day from Booking_Venue
+
+    # Calculate grand total
+    grand_total = (
+        total_dishes_cost +
+        total_drinks_cost +
+        total_entertainment_cost +
+        total_photography_cost +
+        venue_cost
+    )
+
+    # Pass the data to the template
+    context = {
+        'booking_history': booking_history,
+        'grand_total': grand_total,
+    }
+    return render(request, 'booking_history_details.html', context)
+
+
+
+# ==============================ADMIN BOOKING HISTORY===========================
+def admin_booking_history(request):
+    book_events = Book_Event.objects.all()  # Retrieve all bookings
+    context = {
+        'book_events': book_events,
+    }
+    return render(request, 'admin_booking_history.html', context)
+
+
+
+
+def admin_booking_history_details(request, pk):
+    # Retrieve the specific Book_Event instance by primary key (ID)
+    booking_history = get_object_or_404(Book_Event, pk=pk)
+
+    # Calculate the total costs based on selected items in Book_Event
+    number_of_guests = booking_history.number_of_guests
+    total_dishes_cost = sum(
+        (dish.cost_of_dish * number_of_guests) for dish in [
+            booking_history.dish1, 
+            booking_history.dish2, 
+            booking_history.dish3
+        ] if dish
+    )
+    
+    total_drinks_cost = sum(
+        (drink.drinks_cost * number_of_guests) for drink in [
+            booking_history.drinks1, 
+            booking_history.drinks2, 
+            booking_history.drinks3, 
+            booking_history.drinks4
+        ] if drink
+    )
+
+    total_entertainment_cost = sum(
+        entertainment.entertainment_cost for entertainment in [
+            booking_history.entertainment1, 
+            booking_history.entertainment2, 
+            booking_history.entertainment3
+        ] if entertainment
+    )
+    
+    total_photography_cost = booking_history.photography.photography_cost if booking_history.photography else 0
+    venue_cost = booking_history.venue_name.cost_per_day  # Cost per day from Booking_Venue
+
+    # Calculate grand total
+    grand_total = (
+        total_dishes_cost +
+        total_drinks_cost +
+        total_entertainment_cost +
+        total_photography_cost +
+        venue_cost
+    )
+
+    # Pass the data to the template
+    context = {
+        'booking_history': booking_history,
+        'grand_total': grand_total,
+    }
+    return render(request, 'admin_booking_history_details.html', context)
+
+
+def edit_payment_status(request, booking_id):
+    # Fetch the booking using the booking ID
+    booking = get_object_or_404(Book_Event, id=booking_id)
+
+    if request.method == 'POST':
+        # Get the new status from the form
+        new_status = request.POST.get('status')
+
+        # Update the status of the booking
+        booking.status = new_status
+        booking.save()
+
+        # Add a success message
+        messages.success(request, "Payment status has been successfully updated!")
+
+        return redirect('admin_booking_history')  # Redirect to booking history or another page
+
+    # Pass the current status to the template
+    context = {
+        'booking': booking,
+    }
+    return render(request, 'edit_payment_status.html', context)
+
+
+
+def print_receipt(request, booking_id):
+    # Fetch the booking using the booking ID
+    booking = get_object_or_404(Book_Event, id=booking_id)
+    
+    # Render the receipt template with booking details
+    return render(request, 'print_receipt.html', {'booking': booking})
+
+
+def booking_payment(request):
+    return render(request, 'booking_payment.html')
+
+def booking_payment_page(request):
+    return render(request, 'booking_payment_page.html')
+
+
+def booking_payment_process(request, booking_id):
+    bookings = get_object_or_404(Book_Event, id=booking_id)
+    return render(request, 'booking_payment_page.html', {'bookings': bookings})

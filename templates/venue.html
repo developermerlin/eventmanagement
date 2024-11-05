@@ -369,6 +369,7 @@
 								<th style="font-size: 16px; text-align: center;">Venue Name</th>
                 <th style="font-size: 16px; text-align: center;">Address</th>
                 <th style="font-size: 16px; text-align: center;">Contact</th>
+                <th style="font-size: 16px; text-align: center;">Capacity</th>
 								<th style="font-size: 16px; text-align: center;">Action</th>
 								
 							</tr>
@@ -388,6 +389,7 @@
 								<td style="font-size: 18px;">{{venue.venue_name}}</td>
                 <td style="font-size: 18px;">{{venue.address}}</td>
                 <td style="font-size: 18px;">{{venue.contact}}</td>
+                <td style="font-size: 18px;">{{venue.capacity}}</td>
                 <td style="font-size: 18px;">
                   <a href="{% url 'edit_venue' venue.id %}" >
                     <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 20px;"></i>
@@ -474,10 +476,19 @@
                         </div>
 
                       <div class="col-md-6">
-                        <button type="submit" class="btn btn-success p-3 text-white w-100" >
-                          <i class="fas fa-database"></i> Add Venue
-                      </button>                    </div>
+                        <input type="number" class="form-control shadow-none p-4" name="capacity" placeholder="venue capacity" required>
+
+                     
                        </div>
+                                         
+                   </div>
+
+                   <div class="row mt-3">
+                    <div class="col-md-6 offset-md-4">
+                      <button type="submit" class="btn btn-success p-3 text-white w-100" ><i class="fas fa-database"></i> Add Venue</button> 
+                   
+                     </div>
+                   </div>
               
                      
 

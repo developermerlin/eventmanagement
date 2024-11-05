@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Event, Venue, Dish, Entertainment,Booking_Venue
+from .models import Event, Venue, Dish, Entertainment,Booking_Venue,Book_Event
 # Register your models here.
 admin.site.register(Event)
 admin.site.register(Venue)
 admin.site.register(Dish)
 admin.site.register(Entertainment)
 admin.site.register(Booking_Venue)
+admin.site.register(Book_Event)

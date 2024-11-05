@@ -37,6 +37,29 @@ urlpatterns = [
     path('booking_venue/delete/<int:booking_venue_id>/', views.delete_booking_venue, name='delete_booking_venue'),
 
     path('available_venue/', views.available_venue, name='available_venue'),
+    path('available_venue_details/<int:pk>/', views.available_venue_details, name='available_venue_details'),
+
+    path('booking_history/', views.booking_history, name='booking_history'),
+    path('booking_history_details/<int:pk>/', views.booking_history_details, name='booking_history_details'),
+
+    path('book_event/', views.book_event, name='book_event'),
+
+    path('admin_booking_history/', views.admin_booking_history, name='admin_booking_history'),
+    path('admin_booking_history_details/<int:pk>/', views.admin_booking_history_details, name='admin_booking_history_details'),
+    path('edit_payment_status/<int:booking_id>/', views.edit_payment_status, name='edit_payment_status'),
+
+    path('print_receipt/<int:booking_id>/', views.print_receipt, name='print_receipt'),
+
+    path('booking_payment/', views.booking_payment, name='booking_payment'),
+
+   path('booking_payment_page/', views.booking_payment_page, name='booking_payment_page'),
+    path('booking_payment/<int:booking_id>/', views.booking_payment_page, name='booking_payment_process'),
+
+    
+
+
+
+
 
 
 ]

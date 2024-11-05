@@ -1,0 +1,684 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Sleek Dashboard - Free Bootstrap 4 Admin Dashboard Template and UI Kit. It is very powerful bootstrap admin dashboard, which allows you to build products like admin panels, content management systems and CRMs etc.">
+  
+    <title>Events Mangement System</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
+
+    <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
+  
+    <!-- PLUGINS CSS STYLE -->
+    <link href="{% static 'plugins1/simplebar/simplebar.css' %}" rel="stylesheet" />
+    <link href="{% static 'plugins1/nprogress/nprogress.css' %}" rel="stylesheet" />
+  
+    <!-- No Extra plugin used -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    
+    
+    
+    
+    
+    <link href="{% static 'plugins1/data-tables/datatables.bootstrap4.min.css' %}" rel='stylesheet'>
+    
+    
+
+    <!-- SLEEK CSS -->
+    <link id="sleek-css" rel="stylesheet" href="{% static 'css1/sleek.css' %}" />
+  
+    <!-- FAVICON -->
+    <link href="{% static 'img1/favicon.png' %}" rel="shortcut icon" />
+  
+    
+    <script src="{% static 'plugins1/nprogress/nprogress.js' %}"></script>
+  </head>
+
+  <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+   
+
+    <!-- ====================================
+    ——— WRAPPER
+    ===================================== -->
+    <div class="wrapper">
+
+     
+
+
+
+
+        <!-- ====================================
+          ——— LEFT SIDEBAR WITH OUT FOOTER
+        ===================================== -->
+        <aside class="left-sidebar bg-sidebar">
+          <div id="sidebar" class="sidebar sidebar-with-footer">
+            <!-- Aplication Brand -->
+            <div class="app-brand">
+              <a href="{% url 'dashboard' %}" title="Sleek Dashboard">
+                <svg
+                  class="brand-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid"
+                  width="30"
+                  height="33"
+                  viewBox="0 0 30 33">
+                  <g fill="none" fill-rule="evenodd">
+                    <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                    <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                  </g>
+                </svg>
+
+                <span class="brand-name text-truncate">Event Management</span>
+              </a>
+            </div>
+
+                <aside class="left-sidebar bg-sidebar" style="margin-top: -14px;">
+                  <div id="sidebar" class="sidebar sidebar-with-footer">
+                    <!-- Aplication Brand -->
+                    <div class="app-brand">
+                      <a href="/index.html" title="Sleek Dashboard">
+                        <svg
+                          class="brand-icon"
+                          xmlns="http://www.w3.org/2000/svg"
+                          preserveAspectRatio="xMidYMid"
+                          width="30"
+                          height="33"
+                          viewBox="0 0 30 33">
+                          <g fill="none" fill-rule="evenodd">
+                            <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                            <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                          </g>
+                        </svg>
+        
+                        <span class="brand-name text-truncate">Event Management</span>
+                      </a>
+                    </div>
+        
+                    <!-- begin sidebar scrollbar -->
+                    <div class="" data-simplebar style="height: 100%; margin-top: -20px;">
+                      <!-- sidebar menu -->
+                      <ul class="nav sidebar-inner" id="sidebar-menu">
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
+                            aria-expanded="false" aria-controls="dashboard">
+                            <i class="mdi mdi-view-dashboard-outline"></i>
+                            <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="dashboard" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'dashboard' %}">
+                                  <span class="nav-text">Dashboard</span>
+                                </a>
+                              </li>
+        
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
+                            aria-expanded="false" aria-controls="app">
+                            <i class="mdi mdi-pencil-box-multiple"></i>
+                            <span class="nav-text">Book Events</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="app" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="">
+                                  <span class="nav-text">Events</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons1"
+                            aria-expanded="false" aria-controls="icons">
+                            <i class="mdi mdi-diamond-stone"></i>
+                            <span class="nav-text">View Venues</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="icons1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'available_venue' %}">
+                                  <span class="nav-text">view venues</span>
+                                </a>
+                              </li>
+
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components1"
+                            aria-expanded="false" aria-controls="components">
+                            <i class="mdi mdi-folder-multiple-outline"></i>
+                            <span class="nav-text">Booking History</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="components1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'entertainment' %}">
+                                  <span class="nav-text">booking history</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
+                            aria-expanded="false" aria-controls="app">
+                            <i class="mdi mdi-pencil-box-multiple"></i>
+                            <span class="nav-text">Notification</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="app1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'photography' %}">
+                                  <span class="nav-text">All Notification</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+
+        
+                  </div>
+                </aside>
+
+
+
+          </div>
+        </aside>
+
+
+          <!-- ====================================
+        ——— PAGE WRAPPER
+        ===================================== -->
+        <div class="page-wrapper">
+          
+          <!-- Header -->
+          <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+             
+              <!-- search form -->
+              <div class="search-form d-none d-lg-inline-block">
+                <div class="input-group">
+                  
+                  
+                </div>
+                <div id="search-results-container">
+                  
+                </div>
+              </div>
+
+              <div class="navbar-right ">
+                <ul class="nav navbar-nav">
+
+               
+                  <!-- User Account -->
+                  <li class="dropdown user-menu">
+                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <span class="d-none d-lg-inline-block">Welcome {{user}}</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li class="dropdown-footer">
+                        <a href="{% url 'user_logout' %}"> <i class="mdi mdi-logout"></i> Log Out </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
+
+          
+          <!-- ====================================
+          ——— CONTENT WRAPPER
+          ===================================== -->
+          <div class="content-wrapper">
+            <div class="content">
+
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card card-default">
+			<div class="card-header card-header-border-bottom d-flex justify-content-between">
+				<h2>Venue Information</h2>
+                
+        <h4><a href="{% url 'available_venue' %}"> <i class="mdi mdi-logout"></i> Back To Venues </a></h4>
+  
+			</div>
+
+			<div class="card-body" style="padding: -100px;">
+				<div class="container">
+          <div class="row" style="text-align: center;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Name of Venue:</label>
+              <h3 style="color: black;">{{ booking_venue.venue_name }}</h3>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-6">
+                <label for="" style="font-size: large; color: black;">Name of Event:</label>
+                <h3 style="color: black;">{{ booking_venue.event }}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3" style="text-align: center;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Address of Venue:</label>
+              <h3 style="color: black;">{{ booking_venue.venue_name.address }}</h3>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-6">
+                <label for="" style="font-size: large; color: black;">Venue Contact:</label>
+                <h3 style="color: black;">(+232)-{{booking_venue.venue_name.contact}}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-5" style="margin-left: 170px;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Cost of Venue Perday:</label>
+              <h3 style="color: black;">Nle{{ booking_venue.cost_per_day }}</h3>
+            </div>
+
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Capacity of Venue:</label>
+              <h3 style="color: black;">{{ booking_venue.venue_name.capacity }} People</h3>
+            </div>
+          
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12" style="margin-left: 150px;">
+              {% if booking_venue.venue_name.profile %}
+              <img src="{{ booking_venue.venue_name.profile.url }}" alt="Venue Image" style="width: 700px; height: 400px;">
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12" style="margin-left: 80px;">
+              {% if booking_venue.venue_name.video %}
+              <video width="80%" controls>
+                  <source src="{{ booking_venue.venue_name.video.url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          {% endif %}
+            </div>
+          </div>
+
+         
+
+
+          <div class="row mt-4" style="text-align: center;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Available Food/Dish available per plate</label>
+              {% if booking_venue.dish1 %}
+                <h4 style="color: black;">{{ booking_venue.dish1 }} Nle{{ booking_venue.dish1.cost_of_dish }}</h4>
+            {% endif %}
+            {% if booking_venue.dish2 %}
+                <h4 style="color: black;">{{ booking_venue.dish2 }} Nle{{ booking_venue.dish2.cost_of_dish }}</h4>
+            {% endif %}
+            {% if booking_venue.dish3 %}
+                <h4 style="color: black;">{{ booking_venue.dish3 }} Nle{{ booking_venue.dish3.cost_of_dish }}</h4>
+            {% endif %}
+
+            </div>
+           
+              <div class="col-md-6">
+                <label for="" style="font-size: large; color: black;">Available Drinks:</label>
+                {% if booking_venue.drinks1 %}
+                  <h4 style="color: black;">{{ booking_venue.drinks1 }} Nle{{ booking_venue.drinks1.drinks_cost }}</h4>
+              {% endif %}
+              {% if booking_venue.drinks2 %}
+                  <h4 style="color: black;">{{ booking_venue.drinks2 }} Nle{{ booking_venue.drinks2.drinks_cost }}</h4>
+              {% endif %}
+              {% if booking_venue.drinks3 %}
+                  <h4 style="color: black;">{{ booking_venue.drinks3 }} Nle{{ booking_venue.drinks3.drinks_cost }}</h4>
+              {% endif %}
+              {% if booking_venue.drinks4 %}
+                  <h4 style="color: black;">{{ booking_venue.drinks4 }} Nle{{ booking_venue.drinks4.drinks_cost }}</h4>
+              {% endif %}
+              </div>
+            
+          </div>
+
+
+
+
+          <div class="row mt-4" style="text-align: center;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Available Entertainment </label>
+              {% if booking_venue.entertainment1 %}
+                  <h4 style="color: black;">{{ booking_venue.entertainment1 }} Nle{{ booking_venue.entertainment1.entertainment_cost }} </h4>
+              {% endif %}
+              {% if booking_venue.entertainment2 %}
+                  <h4 style="color: black;">{{ booking_venue.entertainment2 }} Nle{{ booking_venue.entertainment2.entertainment_cost }} </h4>
+              {% endif %}
+              {% if booking_venue.entertainment3 %}
+                  <h4 style="color: black;">{{ booking_venue.entertainment3 }} Nle{{ booking_venue.entertainment3.entertainment_cost }} </h4>
+              {% endif %}
+          </div>
+           
+          <div class="col-md-6">
+            <label for="" style="font-size: large; color: black;">Photography(Camera Man)</label>
+            {% if booking_venue.photography %}
+                <h4 style="color: black;">{{ booking_venue.photography }} Nle{{ booking_venue.photography.photography_cost }}</h4>
+            {% endif %}
+        </div>
+        
+            
+          </div>
+        </div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+
+      </div> 
+    </div> 
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle">Booking Venues</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-4">
+                            <label for="venue_name">Select Venue:</label>
+                              <select class="form-control" name="venue_name" required>
+                                <option value="">----Select Venue-----</option>
+                                {% for venue in venues %}
+                                    <option value="{{ venue.id }}">{{ venue.venue_name }}</option>
+                                {% endfor %}
+                            </select>
+
+                          </div>
+                          <div class="col-md-4">
+                            <label for="venue_name">Select Event:</label>
+                            <select class="form-control" name="event" required>
+                              <option value="">----Select Event-----</option>
+                              {% for event in events %}
+                                  <option value="{{ event.id }}">{{ event.event_name }}</option>
+                              {% endfor %}
+                          </select>
+                          </div>
+              
+                          <div class="col-md-4">
+                            <label for="venue_name">Cost of Venue</label>
+                            <input type="number" class="form-control shadow-none p-4" name="cost_per_day" placeholder="Cost of Venue" required>
+                          </div>
+
+
+                          
+                      </div>
+              
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <label for="dish1">Select first Dish:</label>
+                              <select class="form-control" name="dish1" >
+                                <option value="">----Select First Dish-----</option>
+                                {% for dish in dishes %}
+                                    <option value="{{ dish.id }}">{{ dish.dish_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-4">
+                          <label for="dish2">Select Second Dish:</label>
+                          <select class="form-control" name="dish2" >
+                            <option value="">----Select Second Dish-----</option>
+                            {% for dish in dishes %}
+                                <option value="{{ dish.id }}">{{ dish.dish_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label for="dish3">Select Third Dish:</label>
+                          <select class="form-control" name="dish3" >
+                            <option value="">----Select Third Dish-----</option>
+                            {% for dish in dishes %}
+                                <option value="{{ dish.id }}">{{ dish.dish_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                       
+    
+                      </div>
+
+
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <label for="entertainment1">Select first Entertainment type:</label>
+                              <select class="form-control" name="entertainment1" >
+                                <option value="">----Select Entertainment-----</option>
+                                {% for entertainment in entertainments %}
+                                    <option value="{{ entertainment.id }}">{{ entertainment.entertainment_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-4">
+                          <label for="entertainment2">Select Second Entertainment:</label>
+                          <select class="form-control" name="entertainment2" >
+                            <option value="">----Select Entertainment-----</option>
+                            {% for entertainment in entertainments %}
+                                <option value="{{ entertainment.id }}">{{ entertainment.entertainment_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label for="entertainment3">Select Third Entertainment:</label>
+                          <select class="form-control" name="entertainment3" >
+                            <option value="">----Select Entertainment-----</option>
+                            {% for entertainment in entertainments %}
+                                <option value="{{ entertainment.id }}">{{ entertainment.entertainment_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                       
+    
+                      </div>
+
+
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <label for="entertainment1">Select First Drinks Set:</label>
+                              <select class="form-control" name="drinks1" >
+                                <option value="">----Select Drinks-----</option>
+                                {% for drink in drinks %}
+                                    <option value="{{ drink.id }}">{{ drink.drinks_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-4">
+                          <label for="entertainment2">Select Second Drinks Set:</label>
+                          <select class="form-control" name="drinks2" >
+                            <option value="">----Select Drinks-----</option>
+                                {% for drink in drinks %}
+                                    <option value="{{ drink.id }}">{{ drink.drinks_name }}</option>
+                                {% endfor %}
+                        </select>
+                        </div>
+
+                        <div class="col-md-4">
+                          <label for="entertainment3">Select Third Drinks Set:</label>
+                          <select class="form-control" name="drinks3" >
+                            <option value="">----Select Drinks-----</option>
+                            {% for drink in drinks %}
+                                <option value="{{ drink.id }}">{{ drink.drinks_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+
+                      </div>
+
+
+
+                                
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <label for="entertainment3">Select Water Type:</label>
+                          <select class="form-control" name="drinks4" >
+                            <option value="">----Select Drinks-----</option>
+                            {% for drink in drinks %}
+                                <option value="{{ drink.id }}">{{ drink.drinks_name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <label for="entertainment3">Select Photography:</label>
+                          <select class="form-control" name="photography" >
+                            <option value="">----Select Photography-----</option>
+                          {% for photography in photographies %}
+                              <option value="{{ photography.id }}">{{ photography.photography_name }}</option>
+                          {% endfor %}
+                        </select>
+                          
+                        </div>
+
+                      <div class="col-md-4">
+                        <button type="submit" class="btn btn-success p-3 text-white w-100" >
+                          <i class="fas fa-database"></i> Add Booking Venue
+                      </button>                    </div>
+                       </div>
+              
+                     
+
+                   
+
+
+                    <div class="row mt-3">
+                    <div class="col-md-6 offset-md-4">
+                     
+                  </div>
+                  </div>
+                  </div>
+              </form>
+                    
+                
+  
+              
+              
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  
+
+    </div> 
+  </div>
+
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+     var m = "{{ message }}";
+     swal("perfect !", m, "success")
+  </script>
+  {% endif %}
+  {% endfor %}
+ 
+ 
+  {% for message in messages %}
+  {% if message.tags == 'error' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+     var m = "{{ message }}";
+     swal("oops !", m, "error")
+  </script>
+  {% endif %}
+  {% endfor %}
+  
+
+    <!-- Javascript -->
+    <script src="{% static 'plugins1/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'plugins1/simplebar/simplebar.min.js' %}"></script>
+ 
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    <script src="{% static 'plugins1/data-tables/jquery.datatables.min.js' %}"></script>
+    <script src="{% static 'plugins1/data-tables/datatables.bootstrap4.min.js' %}"></script>
+
+    
+
+    <script src="{% static 'js1/sleek.js' %}"></script>
+  <link href="{% static 'options1/optionswitch.css' %}" rel="stylesheet">
+<script src="{% static 'options1/optionswitcher.js' %}"></script>
+</body>
+</html>
+

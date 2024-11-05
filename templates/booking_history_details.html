@@ -1,0 +1,562 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Sleek Dashboard - Free Bootstrap 4 Admin Dashboard Template and UI Kit. It is very powerful bootstrap admin dashboard, which allows you to build products like admin panels, content management systems and CRMs etc.">
+  
+    <title>Events Mangement System</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
+
+    <link href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css" rel="stylesheet" />
+  
+    <!-- PLUGINS CSS STYLE -->
+    <link href="{% static 'plugins1/simplebar/simplebar.css' %}" rel="stylesheet" />
+    <link href="{% static 'plugins1/nprogress/nprogress.css' %}" rel="stylesheet" />
+  
+    <!-- No Extra plugin used -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    
+    
+    
+    
+    
+    <link href="{% static 'plugins1/data-tables/datatables.bootstrap4.min.css' %}" rel='stylesheet'>
+    
+    
+
+    <!-- SLEEK CSS -->
+    <link id="sleek-css" rel="stylesheet" href="{% static 'css1/sleek.css' %}" />
+  
+    <!-- FAVICON -->
+    <link href="{% static 'img1/favicon.png' %}" rel="shortcut icon" />
+  
+    
+    <script src="{% static 'plugins1/nprogress/nprogress.js' %}"></script>
+  </head>
+
+  <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+   
+
+    <!-- ====================================
+    ——— WRAPPER
+    ===================================== -->
+    <div class="wrapper">
+
+     
+
+
+
+
+        <!-- ====================================
+          ——— LEFT SIDEBAR WITH OUT FOOTER
+        ===================================== -->
+        <aside class="left-sidebar bg-sidebar">
+          <div id="sidebar" class="sidebar sidebar-with-footer">
+            <!-- Aplication Brand -->
+            <div class="app-brand">
+              <a href="{% url 'dashboard' %}" title="Sleek Dashboard">
+                <svg
+                  class="brand-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid"
+                  width="30"
+                  height="33"
+                  viewBox="0 0 30 33">
+                  <g fill="none" fill-rule="evenodd">
+                    <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                    <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                  </g>
+                </svg>
+
+                <span class="brand-name text-truncate">Event Management</span>
+              </a>
+            </div>
+
+                <aside class="left-sidebar bg-sidebar" style="margin-top: -14px;">
+                  <div id="sidebar" class="sidebar sidebar-with-footer">
+                    <!-- Aplication Brand -->
+                    <div class="app-brand">
+                      <a href="/index.html" title="Sleek Dashboard">
+                        <svg
+                          class="brand-icon"
+                          xmlns="http://www.w3.org/2000/svg"
+                          preserveAspectRatio="xMidYMid"
+                          width="30"
+                          height="33"
+                          viewBox="0 0 30 33">
+                          <g fill="none" fill-rule="evenodd">
+                            <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                            <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                          </g>
+                        </svg>
+        
+                        <span class="brand-name text-truncate">Event Management</span>
+                      </a>
+                    </div>
+        
+                    <!-- begin sidebar scrollbar -->
+                    <div class="" data-simplebar style="height: 100%; margin-top: -20px;">
+                      <!-- sidebar menu -->
+                      <ul class="nav sidebar-inner" id="sidebar-menu">
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
+                            aria-expanded="false" aria-controls="dashboard">
+                            <i class="mdi mdi-view-dashboard-outline"></i>
+                            <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="dashboard" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'dashboard' %}">
+                                  <span class="nav-text">Dashboard</span>
+                                </a>
+                              </li>
+        
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
+                            aria-expanded="false" aria-controls="app">
+                            <i class="mdi mdi-pencil-box-multiple"></i>
+                            <span class="nav-text">Book Events</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="app" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="">
+                                  <span class="nav-text">Events</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons1"
+                            aria-expanded="false" aria-controls="icons">
+                            <i class="mdi mdi-diamond-stone"></i>
+                            <span class="nav-text">View Venues</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="icons1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'available_venue' %}">
+                                  <span class="nav-text">view venues</span>
+                                </a>
+                              </li>
+
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components1"
+                            aria-expanded="false" aria-controls="components">
+                            <i class="mdi mdi-folder-multiple-outline"></i>
+                            <span class="nav-text">Booking History</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="components1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'entertainment' %}">
+                                  <span class="nav-text">booking history</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
+                            aria-expanded="false" aria-controls="app">
+                            <i class="mdi mdi-pencil-box-multiple"></i>
+                            <span class="nav-text">Notification</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="app1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'photography' %}">
+                                  <span class="nav-text">All Notification</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+
+        
+                  </div>
+                </aside>
+
+
+
+          </div>
+        </aside>
+
+
+          <!-- ====================================
+        ——— PAGE WRAPPER
+        ===================================== -->
+        <div class="page-wrapper">
+          
+          <!-- Header -->
+          <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+             
+              <!-- search form -->
+              <div class="search-form d-none d-lg-inline-block">
+                <div class="input-group">
+                  
+                  
+                </div>
+                <div id="search-results-container">
+                  
+                </div>
+              </div>
+
+              <div class="navbar-right ">
+                <ul class="nav navbar-nav">
+
+               
+                  <!-- User Account -->
+                  <li class="dropdown user-menu">
+                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <span class="d-none d-lg-inline-block">Welcome {{user}}</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li class="dropdown-footer">
+                        <a href="{% url 'user_logout' %}"> <i class="mdi mdi-logout"></i> Log Out </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
+
+          
+          <!-- ====================================
+          ——— CONTENT WRAPPER
+          ===================================== -->
+          <div class="content-wrapper">
+            <div class="content">
+
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card card-default">
+			<div class="card-header card-header-border-bottom d-flex justify-content-between">
+				
+                
+        <h4><a href="{% url 'booking_history' %}"> <i class="mdi mdi-logout"></i> Back To Booking History </a></h4>
+  
+			</div>
+
+			<div class="card-body" style="padding: -100px;">
+        <div class="row">
+          <div class="col-md-6 offset-md-4">
+            <h1 style="color: black;">Booking Details</h1>
+          </div>
+        </div>
+				<div class="container" style="border: 2px solid black; border-radius: 20px; width: 70%; margin-top: 10px;">
+          
+          <div class="row" style="text-align: center; margin-top: 20px;">
+            <div class="col-md-6">
+              <label for="" style="font-size: 20px; color: black;">Name of Client: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;"><h2>{{booking_history.customer}}</h2></strong></span></label>
+              
+            </div>
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Contact of Client: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;">
+                <h2>(+232){{booking_history.customer_contact}}</h2></strong></span></label>
+              
+            </div>
+            
+          </div>
+
+
+          <div class="row" style="text-align: center; margin-top: 20px;">
+            <div class="col-md-6">
+              <label for="" style="font-size: 20px; color: black;">Name of Venue: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;"><h2>{{booking_history.venue_name}}</h2></strong></span></label>
+              
+            </div>
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Name of Event: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;">
+                <h2>{{booking_history.venue_name.event}}</h2></strong></span></label>
+              
+            </div>
+            
+          </div>
+
+
+          <div class="row" style="text-align: center;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Address of Venue: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;">
+                <h2>{{booking_history.venue_name.venue_name.address}}</h2></strong></span></label>
+              
+            </div>
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Point of Contact: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;">
+                <h2>(+232){{booking_history.venue_name.venue_name.contact}}</h2></strong></span></label>
+              
+            </div>
+            
+          </div>
+
+          
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black; margin-left: 50px;">Cost of Venue: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;"> 
+                <h2>Nle{{booking_history.venue_name.cost_per_day}}</h2> </strong></span></label>
+              
+            </div>
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black; margin-left: 50px;">No of Guests: <span style="font-size: 20px;"><strong style="font-size: 20px; font-weight: 900;"> 
+                <h2>{{booking_history.number_of_guests}}</h2> </strong></span></label>
+              
+            </div>
+            
+          </div>
+
+
+          <div class="row" style="text-align: center; margin-top: 10px;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black; ">Cost of Food: <span style="font-size: 20px;"><br><strong style="font-size: 20px; font-weight: 900;">
+
+                {% if booking_history.dish1 %}
+                <h4 style="color: black;  font-weight: bold;">{{ booking_history.dish1 }} Nle{{ booking_history.dish1.cost_of_dish }}</h4>
+            {% endif %}
+            {% if booking_history.dish2 %}
+            <h4 style="color: black;  font-weight: bold;">{{ booking_history.dish2 }} Nle{{ booking_history.dish1.cost_of_dish }}</h4>
+            {% endif %}
+            {% if booking_history.dish3 %}
+            <h4 style="color: black; font-weight: bold;">{{ booking_history.dish3 }} Nle{{ booking_history.dish1.cost_of_dish }}</h4>
+            {% endif %}
+              </strong></span></label>
+              
+            </div>
+
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Cost of Drinks: <span style="font-size: 20px;"><br><strong style="font-size: 20px; font-weight: 900;">
+
+                {% if booking_history.drinks1 %}
+                <h4 style="color: black;  font-weight: bold;">{{ booking_history.drinks1 }} Nle{{ booking_history.drinks1.drinks_cost }}</h4>
+            {% endif %}
+            {% if booking_history.drinks2 %}
+            <h4 style="color: black;  font-weight: bold;">{{ booking_history.drinks2 }} Nle{{ booking_history.drinks1.drinks_cost }}</h4>
+            {% endif %}
+            {% if booking_history.drinks3 %}
+            <h4 style="color: black; font-weight: bold;">{{ booking_history.drinks3 }} Nle{{ booking_history.drinks1.drinks_cost }}</h4>
+            {% endif %}
+            {% if booking_history.drinks4 %}
+            <h4 style="color: black; font-weight: bold;">{{ booking_history.drinks4 }} Nle{{ booking_history.drinks1.drinks_cost }}</h4>
+            {% endif %}
+              </strong></span></label>
+              
+            </div>
+            
+          </div>
+
+
+
+
+          <div class="row" style="text-align: center; margin-top: 10px;">
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Entertainment: <span style="font-size: 20px;"><br><strong style="font-size: 20px; font-weight: 900;">
+
+                {% if booking_history.entertainment1 %}
+                <h4 style="color: black;">{{ booking_history.entertainment1 }} Nle{{ booking_history.entertainment1.entertainment_cost }} </h4>
+            {% endif %}
+            {% if booking_history.entertainment2 %}
+                <h4 style="color: black;">{{ booking_history.entertainment2 }} Nle{{ booking_history.entertainment2.entertainment_cost }} </h4>
+            {% endif %}
+            {% if booking_history.entertainment3 %}
+                <h4 style="color: black;">{{ booking_history.entertainment3 }} Nle{{ booking_history.entertainment3.entertainment_cost }} </h4>
+            {% endif %}
+              </strong></span></label>
+              
+            </div>
+
+
+            <div class="col-md-6">
+              <label for="" style="font-size: large; color: black;">Photography(Camera Man): <span style="font-size: 20px;"><br><strong style="font-size: 20px; font-weight: 900;">
+
+                {% if booking_history.photography %}
+                <h4 style="color: black; font-weight: bold;">{{ booking_history.photography }} Nle{{ booking_history.photography.photography_cost }}</h4>
+            {% endif %}
+              </strong></span></label>
+              
+            </div>
+
+            
+          </div>
+
+
+          <div class="row" style="text-align: center;">
+            
+            
+          </div>
+
+
+          <div class="row" style="text-align: center; margin-left: 100px;">
+            <div class="col-md-6 offset-md-2">
+              <label for="" style="font-size: large; color: black;">Total Booking Cost: <span style="font-size: 20px;"><br><strong style="font-size: 20px; font-weight: 900;">
+
+                
+                <h4 style="color: black; font-weight: bold; ">Nle{{ grand_total }} </h4>
+            
+              </strong></span></label>
+              
+            </div>
+            
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <a href="{% url 'dashboard' %}" class="btn btn-success mb-3  w-100">Back Home</a>
+            
+             
+              
+            </div>
+
+
+            <div class="col-md-6">
+              <a href="" class="btn btn-danger mb-3  w-100">Proceed to payment</a>
+            
+              
+              
+            </div>
+          </div>
+
+
+         
+
+      
+
+          
+
+
+          
+
+         
+
+
+         
+
+
+
+
+          
+        </div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+
+      </div> 
+    </div> 
+    
+    <!-- Modal -->
+
+  
+
+    </div> 
+  </div>
+
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+     var m = "{{ message }}";
+     swal("perfect !", m, "success")
+  </script>
+  {% endif %}
+  {% endfor %}
+ 
+ 
+  {% for message in messages %}
+  {% if message.tags == 'error' %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+     var m = "{{ message }}";
+     swal("oops !", m, "error")
+  </script>
+  {% endif %}
+  {% endfor %}
+  
+
+    <!-- Javascript -->
+    <script src="{% static 'plugins1/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins1/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'plugins1/simplebar/simplebar.min.js' %}"></script>
+ 
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    <script src="{% static 'plugins1/data-tables/jquery.datatables.min.js' %}"></script>
+    <script src="{% static 'plugins1/data-tables/datatables.bootstrap4.min.js' %}"></script>
+
+    
+
+    <script src="{% static 'js1/sleek.js' %}"></script>
+  <link href="{% static 'options1/optionswitch.css' %}" rel="stylesheet">
+<script src="{% static 'options1/optionswitcher.js' %}"></script>
+</body>
+</html>
+
