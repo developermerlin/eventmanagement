@@ -43,17 +43,14 @@
   </head>
 
   <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
-   
 
-    <!-- ====================================
-    ——— WRAPPER
-    ===================================== -->
     <div class="wrapper">
+
+
 
         <!-- ====================================
           ——— LEFT SIDEBAR WITH OUT FOOTER
         ===================================== -->
-        
         <aside class="left-sidebar bg-sidebar">
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
@@ -126,14 +123,14 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
                             aria-expanded="false" aria-controls="app">
                             <i class="mdi mdi-pencil-box-multiple"></i>
-                            <span class="nav-text">Book Events</span> <b class="caret"></b>
+                            <span class="nav-text">Events</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="app" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="{% url 'book_event' %}">
-                                  <span class="nav-text">Events</span>
+                                <a class="sidenav-item-link" href="{% url 'event' %}">
+                                  <span class="nav-text">All Events</span>
                                 </a>
                               </li>
         
@@ -145,17 +142,22 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons1"
                             aria-expanded="false" aria-controls="icons">
                             <i class="mdi mdi-diamond-stone"></i>
-                            <span class="nav-text">View Venues</span> <b class="caret"></b>
+                            <span class="nav-text">Dishes/Food</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="icons1" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="{% url 'available_venue' %}">
-                                  <span class="nav-text">view venues</span>
+                                <a class="sidenav-item-link" href="{% url 'dish' %}">
+                                  <span class="nav-text">Cost of Food</span>
                                 </a>
                               </li>
 
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'drinks' %}">
+                                  <span class="nav-text">Cost of Drinks</span>
+                                </a>
+                              </li>
                             </div>
                           </ul>
                         </li>
@@ -164,14 +166,14 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components1"
                             aria-expanded="false" aria-controls="components">
                             <i class="mdi mdi-folder-multiple-outline"></i>
-                            <span class="nav-text">Booking History</span> <b class="caret"></b>
+                            <span class="nav-text">Entertainment</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="components1" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="{% url 'booking_history' %}">
-                                  <span class="nav-text">booking history</span>
+                                <a class="sidenav-item-link" href="{% url 'entertainment' %}">
+                                  <span class="nav-text">All Entertainment</span>
                                 </a>
                               </li>
         
@@ -183,14 +185,14 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
                             aria-expanded="false" aria-controls="app">
                             <i class="mdi mdi-pencil-box-multiple"></i>
-                            <span class="nav-text">Notification</span> <b class="caret"></b>
+                            <span class="nav-text">photography</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="app1" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
                                 <a class="sidenav-item-link" href="{% url 'photography' %}">
-                                  <span class="nav-text">All Notification</span>
+                                  <span class="nav-text">All Photography</span>
                                 </a>
                               </li>
         
@@ -198,6 +200,103 @@
                           </ul>
                         </li>
 
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
+                            aria-expanded="false" aria-controls="components">
+                            <i class="mdi mdi-folder-multiple-outline"></i>
+                            <span class="nav-text">Venues</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="components" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'venue' %}">
+                                  <span class="nav-text">All Venues</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
+                            aria-expanded="false" aria-controls="icons">
+                            <i class="mdi mdi-diamond-stone"></i>
+                            <span class="nav-text">Bookings</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="icons" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="material-icon.html">
+                                  <span class="nav-text">All Bookings</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#componentss"
+                            aria-expanded="false" aria-controls="components">
+                            <i class="mdi mdi-folder-multiple-outline"></i>
+                            <span class="nav-text">Booking Venues</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="componentss" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'booking_venue' %}">
+                                  <span class="nav-text"> booking venues</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+
+
+                        
+        
+                        <!-- <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#forms"
+                            aria-expanded="false" aria-controls="forms">
+                            <i class="mdi mdi-email-mark-as-unread"></i>
+                            <span class="nav-text">Notification</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="forms" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="basic-input.html">
+                                  <span class="nav-text">All Notification</span>
+                                </a>
+                              </li>
+                            </div>
+                          </ul>
+                        </li> -->
+        
+                        
+        
+                        <li class="has-sub active expand">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tables"
+                            aria-expanded="false" aria-controls="tables">
+                            <i class="mdi mdi-table"></i>
+                            <span class="nav-text">Booking History</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse show" id="tables" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="basic-tables.html">
+                                  <span class="nav-text">Booking History</span>
+                                </a>
+                              </li>
+                            </div>
+                          </ul>
+                        </li>
         
                   </div>
                 </aside>
@@ -260,110 +359,57 @@
 	<div class="col-12">
 		<div class="card card-default">
 			<div class="card-header card-header-border-bottom d-flex justify-content-between">
-				<h2>Payment</h2>
-                
-        <div class="container">
-          <div class="row mt-5">
-            <div class="col-md-12">
-             <h1 style="color: black; text-align: center;">Booking Payment Process</h1>
-             <p style="text-align: center; margin-top: 10px; color: black;">Cleints are kindly advise to verify their input details before submitting</p>
-            </div>
-            
-          </div>
+				<h1 style="color: black;">Booking Payment History</h1>
 
-          <div class="row mt-5">
-           
-
-            <div class="col-md-6"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-left: -10px;">
-              {% for item in booking %}
-                <h5 style="color: black;">Customer: {{ item.customer }}</h5>
-                <h5 style="color: black;" class="mt-2">Venue: {{ item.venue_name }}</h5>
-                <h5 style="color: black;" class="mt-2">Booking Date: {{ item.date|date:"Y-m-d" }}</h5>
-                <h5 style="color: black;" class="mt-2">Number of Guests: {{ item.number_of_guests }}</h5>
-                <h5 style="color: black;" class="mt-2">Status: <span style="color: green;">{{ item.status }}</span></h5></h2>
-                <hr style="color: black; border: 2px solid black;">
-                <h5 style="color: black;">Cost of Venue: Nle{{item.venue_name.cost_per_day}}</h5>
-              
-              {% if item.dish1 %}
-              <h5 style="color: black;">{{ item.dish1 }} Nle{{ item.dish1.cost_of_dish }}</h5>
-              {% endif %}
-              {% if item.dish2 %}
-              <h5 style="color: black;">{{ item.dish2 }} Nle{{ item.dish2.cost_of_dish }}</h5>
-              {% endif %}
-              {% if item.dish3 %}
-              <h5 style="color: black;">{{ item.dish3 }} Nle{{ item.dish3.cost_of_dish }}</h5>
-              {% endif %}
-              
-
-              <hr style="color: black; border: 2px solid black;">
-
-            {% if item.drinks1 %}
-            <h5 style="color: black;">{{ item.drinks1 }} Nle{{ item.drinks1.drinks_cost }}</h5>
-            {% endif %}
-            {% if item.drinks2 %}
-            <h5 style="color: black;">{{ item.drinks2 }} Nle{{ item.drinks2.drinks_cost }}</h5>
-            {% endif %}
-            {% if item.drinks3 %}
-            <h5 style="color: black;">{{ item.drinks3 }} Nle{{ item.drinks3.drinks_cost }}</h5>
-            {% endif %}
-            {% if item.drinks4 %}
-            <h5 style="color: black;">{{ item.drinks4 }} Nle{{ item.drinks4.drinks_cost }}</h5>
-            {% endif %}
-
-            <hr style="color: black; border: 2px solid black;">
-
-            {% if item.entertainment1 %}
-            <h5 style="color: black;">{{ item.entertainment1 }} Nle{{ item.entertainment1.entertainment_cost }} </h5>
-            {% endif %}
-            {% if item.entertainment2 %}
-                <h5 style="color: black;">{{ item.entertainment2 }} Nle{{ item.entertainment2.entertainment_cost }} </h5>
-            {% endif %}
-            {% if item.entertainment3 %}
-                <h5 style="color: black;">{{ item.entertainment3 }} Nle{{ item.entertainment3.entertainment_cost }} </h5>
-            {% endif %}
-
-
-            {% if item.photography %}
-                <h5 style="color: black;">{{ item.photography }} Nle{{ item.photography.photography_cost }}</h5>
-            {% endif %}
-
-
-           
-            <p style="color: black; font-size: 25px; font-weight: bold; margin-top: 5px;">Total Booking Cost:Nle{{item.grand_total}}</p>
-
-            {% endfor %}
-
-             </div>
-             
-
-             
-           <div class="col-md-6"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-right: -15px;">
-            <h1 style="color: black; margin-top: -20px; margin-bottom: 15px; text-align: center;">Transaction Process</h1>
-            <form action="" method="post">
-              {% csrf_token %}
-              <label for="" style="color: black; font-size: 20px;">Enter Full Name</label>
-              <input type="text" class="form-control p-4" name="user_name" placeholder="Enter Name" style="border: 2px solid black; font-size: 20px;">
-
-              <label for="" style="color: black; font-size: 20px;">Enter Your Wallet Phone Number</label>
-              <input type="number" class="form-control p-4" name="phone_number" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
-  
-              <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Amount you want to send</label>
-              <input type="text" class="form-control p-4" name="amount" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
-  
-              <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Wallet Pin</label>
-              <input type="number" class="form-control p-4" name="pin" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
-  
-              <button type="submit" class="btn btn-success w-100 mt-3">Complete Transfer</button>
-              <a href="{% url 'booking_payment' %}" class="btn btn-danger w-100 mt-2">Cancel Payment Process</a>
-            </form>
-           
-           </div>
-          </div>
-      </div>
-      
 			</div>
 
+			<div class="card-body" style="padding: -200px;">
+					<table id="" class="table nowrap" style="width:100%">
+						<thead>
+							<tr>
+								<th style="font-size: 16px; text-align: center;">No</th>
+                <th style="font-size: 16px; text-align: center;">Name of Client</th>
+								<th style="font-size: 16px; text-align: center;">Card Number</th>
+                <th style="font-size: 16px; text-align: center;">Transaction Date</th>
+								<th style="font-size: 16px; text-align: center;">Action</th>
+								
+							</tr>
+						</thead>
+
+						<tbody>
+              {% for item in creditcards %}      
+							<tr style="font-size: 15px; color:rgb(45, 41, 41); text-align: center;">
+								<td style="font-size: 18px; text-align: center;">{{forloop.counter}}</td>
+                <td>
+                  {{ item.name_on_card }}
+                </td>
+								<td>
+                 {{ item.card_number }}
+                </td>
+								<td style="font-size: 18px; text-align: center;">{{ item.date|date:"Y-m-d" }}</td>
+               
+                <td style="font-size: 18px; text-align: center; width: 30%;">
+                  
+                
+
+                  <a href="{% url 'admin_booking_history'%}" class="btn btn-outline-danger">
+                    Proceed to Booking History
+                  </a>
+
+                  {% if afrimoney.status == "successful" %}
+                    <a href="" class="btn btn-outline-success" style="margin-right: -30px;">
+                        Print Receipt
+                    </a>
+                {% endif %}
+                </td>
+                
+
+							</tr>
+                {% endfor %}    
+						</tbody>
+					</table>
 			
+			</div>
 		</div>
 	</div>
 
@@ -377,6 +423,7 @@
       </div> 
     </div> 
     
+ 
   
 
     </div> 

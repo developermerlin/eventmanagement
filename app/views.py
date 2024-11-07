@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .models import Booking_Venue, Venue, Event, Dish, Entertainment, Photography, Drinks,Book_Event
+from .models import Booking_Venue, Venue, Event, Dish, Entertainment, Photography, Drinks,Book_Event,Afrimoney,Creditcard
 from django.contrib import messages
 # Create your views here.
 
@@ -10,10 +10,30 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    available_venue = Booking_Venue.objects.all().count()
+    books = Book_Event.objects.all().count()
+    events = Event.objects.all().count()
+    mobile = Afrimoney.objects.all().count()
+    card = Creditcard.objects.all().count()
+    
+    context = {
+        'available_venue':available_venue,
+        'books':books,
+        'events':events,
+        'mobile':mobile,
+        'card':card,
+    }
+    return render(request, 'dashboard.html' ,context)
 
 def users(request):
-    return render(request, 'users.html')
+    available_venue = Booking_Venue.objects.all().count()
+    books = Book_Event.objects.all().count()
+    
+    context = {
+        'available_venue':available_venue,
+        'books':books
+    }
+    return render(request, 'users.html',context)
 
 
 
@@ -631,7 +651,7 @@ def book_event(request):
             drinks2_id=drinks2_id,
             drinks3_id=drinks3_id,
             drinks4_id=drinks4_id,
-            status='pending',  # Set default status to pending
+            status='pending',  
         )
 
         # Add a success message
@@ -786,7 +806,7 @@ def edit_payment_status(request, booking_id):
         booking.save()
 
         # Add a success message
-        messages.success(request, "Payment status has been successfully updated!")
+        messages.success(request, "Booking Payment status has been updated!")
 
         return redirect('admin_booking_history')  # Redirect to booking history or another page
 
@@ -796,23 +816,325 @@ def edit_payment_status(request, booking_id):
     }
     return render(request, 'edit_payment_status.html', context)
 
-
+def receipt(request):
+    return render(request, 'print_receipt.html')
 
 def print_receipt(request, booking_id):
     # Fetch the booking using the booking ID
     booking = get_object_or_404(Book_Event, id=booking_id)
+
+    number_of_guests = booking.number_of_guests
+    total_dishes_cost = sum(
+        (dish.cost_of_dish * number_of_guests) for dish in [
+            booking.dish1, 
+            booking.dish2, 
+            booking.dish3
+        ] if dish
+    )
+    
+    total_drinks_cost = sum(
+        (drink.drinks_cost * number_of_guests) for drink in [
+            booking.drinks1, 
+            booking.drinks2, 
+            booking.drinks3, 
+            booking.drinks4
+        ] if drink
+    )
+
+    total_entertainment_cost = sum(
+        entertainment.entertainment_cost for entertainment in [
+            booking.entertainment1, 
+            booking.entertainment2, 
+            booking.entertainment3
+        ] if entertainment
+    )
+    
+    total_photography_cost = booking.photography.photography_cost if booking.photography else 0
+    venue_cost = booking.venue_name.cost_per_day  # Cost per day from Booking_Venue
+
+    # Calculate grand total
+    grand_total = (
+        total_dishes_cost +
+        total_drinks_cost +
+        total_entertainment_cost +
+        total_photography_cost +
+        venue_cost
+    )
     
     # Render the receipt template with booking details
-    return render(request, 'print_receipt.html', {'booking': booking})
+    return render(request, 'print_receipt.html', {'booking': booking, 'grand_total':grand_total})
 
 
 def booking_payment(request):
     return render(request, 'booking_payment.html')
 
+
 def booking_payment_page(request):
-    return render(request, 'booking_payment_page.html')
+    bookings = Book_Event.objects.all()
+    if request.method == 'POST':
+        user_name = request.POST.get('username')
+        phone_number = request.POST.get('phone_number')
+        amount = request.POST.get('amount')
+        pin = request.POST.get('pin')
+
+        afrimoney = Afrimoney(
+            user_name=user_name,
+            phone_number=phone_number,
+            amount=amount,
+            pin=pin
+        )
+
+        afrimoney.save()
+        messages.success(request, "Payment Successfully done. Please wait for some minutes while your booking is being processed")
+        return redirect('booking_history')
+
+
+    # Calculate the grand total for each booking and store it in the booking instance
+    for booking in bookings:
+        # Get the number of guests
+        number_of_guests = booking.number_of_guests
+
+        # Calculate the costs for dishes
+        total_dishes_cost = 0
+        for dish in [booking.dish1, booking.dish2, booking.dish3]:
+            if dish:
+                total_dishes_cost += dish.cost_of_dish * number_of_guests
+
+        # Calculate the costs for drinks
+        total_drinks_cost = 0
+        for drink in [booking.drinks1, booking.drinks2, booking.drinks3, booking.drinks4]:
+            if drink:
+                total_drinks_cost += drink.drinks_cost * number_of_guests
+
+        # Calculate the costs for entertainment
+        total_entertainment_cost = 0
+        for entertainment in [booking.entertainment1, booking.entertainment2, booking.entertainment3]:
+            if entertainment:
+                total_entertainment_cost += entertainment.entertainment_cost
+
+        # Calculate the cost for photography
+        total_photography_cost = 0
+        if booking.photography:
+            total_photography_cost = booking.photography.photography_cost
+
+        # Venue cost (assuming it's a fixed cost per booking)
+        venue_cost = booking.venue_name.cost_per_day
+
+        # Calculate the grand total
+        booking.grand_total = (
+            total_dishes_cost +
+            total_drinks_cost +
+            total_entertainment_cost +
+            total_photography_cost +
+            venue_cost
+        )
+
+    # Pass the bookings with calculated grand_total to the template
+    return render(request, 'booking_payment_page.html', {'booking': bookings})
 
 
 def booking_payment_process(request, booking_id):
     bookings = get_object_or_404(Book_Event, id=booking_id)
     return render(request, 'booking_payment_page.html', {'bookings': bookings})
+
+
+def admin_booking_payment_page(request):
+    bookings = Book_Event.objects.all()
+    afrimoneys = Afrimoney.objects.all()
+    if request.method == 'POST':
+        user_name = request.POST.get('username')
+        phone_number = request.POST.get('phone_number')
+        amount = request.POST.get('amount')
+        pin = request.POST.get('pin')
+
+        afrimoney = Afrimoney(
+            user_name=user_name,
+            phone_number=phone_number,
+            amount=amount,
+            pin=pin
+        )
+
+        afrimoney.save()
+        messages.success(request, "Payment Successfully done. Please wait for some minutes while your booking is being processed")
+        return redirect('booking_history')
+
+
+    # Calculate the grand total for each booking and store it in the booking instance
+    for booking in bookings:
+        # Get the number of guests
+        number_of_guests = booking.number_of_guests
+
+        # Calculate the costs for dishes
+        total_dishes_cost = 0
+        for dish in [booking.dish1, booking.dish2, booking.dish3]:
+            if dish:
+                total_dishes_cost += dish.cost_of_dish * number_of_guests
+
+        # Calculate the costs for drinks
+        total_drinks_cost = 0
+        for drink in [booking.drinks1, booking.drinks2, booking.drinks3, booking.drinks4]:
+            if drink:
+                total_drinks_cost += drink.drinks_cost * number_of_guests
+
+        # Calculate the costs for entertainment
+        total_entertainment_cost = 0
+        for entertainment in [booking.entertainment1, booking.entertainment2, booking.entertainment3]:
+            if entertainment:
+                total_entertainment_cost += entertainment.entertainment_cost
+
+        # Calculate the cost for photography
+        total_photography_cost = 0
+        if booking.photography:
+            total_photography_cost = booking.photography.photography_cost
+
+        # Venue cost (assuming it's a fixed cost per booking)
+        venue_cost = booking.venue_name.cost_per_day
+
+        # Calculate the grand total
+        booking.grand_total = (
+            total_dishes_cost +
+            total_drinks_cost +
+            total_entertainment_cost +
+            total_photography_cost +
+            venue_cost
+        )
+
+    return render(request, 'admin_booking_payment_page.html', {'booking': bookings, 'afrimoneys':afrimoneys})
+
+
+def admin_afrimoney_detail(request, pk):
+    payment = get_object_or_404(Afrimoney, pk=pk)
+    return render(request, 'admin_afrimoney_detail.html', {'payment': payment})
+
+
+def booking_payment_page2(request):
+    bookings = Book_Event.objects.all()
+    if request.method == 'POST':
+        card_number = request.POST.get('card_number')
+        name_on_card = request.POST.get('name_on_card')
+        month = request.POST.get('month')
+        year = request.POST.get('year')
+        cvv = request.POST.get('cvv')
+
+        creditcard = Creditcard(
+            card_number=card_number,
+            name_on_card=name_on_card,
+            month=month,
+            year=year,
+            cvv=cvv,
+        )
+
+        creditcard.save()
+        messages.success(request, "Payment Successfully done. Please wait for some minutes while your booking is being processed")
+        return redirect('booking_history')
+
+
+    # Calculate the grand total for each booking and store it in the booking instance
+    for booking in bookings:
+        # Get the number of guests
+        number_of_guests = booking.number_of_guests
+
+        # Calculate the costs for dishes
+        total_dishes_cost = 0
+        for dish in [booking.dish1, booking.dish2, booking.dish3]:
+            if dish:
+                total_dishes_cost += dish.cost_of_dish * number_of_guests
+
+        # Calculate the costs for drinks
+        total_drinks_cost = 0
+        for drink in [booking.drinks1, booking.drinks2, booking.drinks3, booking.drinks4]:
+            if drink:
+                total_drinks_cost += drink.drinks_cost * number_of_guests
+
+        # Calculate the costs for entertainment
+        total_entertainment_cost = 0
+        for entertainment in [booking.entertainment1, booking.entertainment2, booking.entertainment3]:
+            if entertainment:
+                total_entertainment_cost += entertainment.entertainment_cost
+
+        # Calculate the cost for photography
+        total_photography_cost = 0
+        if booking.photography:
+            total_photography_cost = booking.photography.photography_cost
+
+        # Venue cost (assuming it's a fixed cost per booking)
+        venue_cost = booking.venue_name.cost_per_day
+
+        # Calculate the grand total
+        booking.grand_total = (
+            total_dishes_cost +
+            total_drinks_cost +
+            total_entertainment_cost +
+            total_photography_cost +
+            venue_cost
+        )
+
+    # Pass the bookings with calculated grand_total to the template
+    return render(request, 'booking_payment_page2.html', {'booking': bookings})
+
+
+def admin_booking_payment_page2(request):
+    bookings = Book_Event.objects.all()
+    creditcards = Creditcard.objects.all()
+    if request.method == 'POST':
+        card_number = request.POST.get('card_number')
+        name_on_card = request.POST.get('name_on_card')
+        month = request.POST.get('month')
+        year = request.POST.get('year')
+        cvv = request.POST.get('cvv')
+
+        creditcard = Creditcard(
+            card_number=card_number,
+            name_on_card=name_on_card,
+            month=month,
+            year=year,
+            cvv=cvv,
+        )
+
+        creditcard.save()
+        messages.success(request, "Payment Successfully done. Please wait for some minutes while your booking is being processed")
+        return redirect('booking_history')
+
+
+    # Calculate the grand total for each booking and store it in the booking instance
+    for booking in bookings:
+        # Get the number of guests
+        number_of_guests = booking.number_of_guests
+
+        # Calculate the costs for dishes
+        total_dishes_cost = 0
+        for dish in [booking.dish1, booking.dish2, booking.dish3]:
+            if dish:
+                total_dishes_cost += dish.cost_of_dish * number_of_guests
+
+        # Calculate the costs for drinks
+        total_drinks_cost = 0
+        for drink in [booking.drinks1, booking.drinks2, booking.drinks3, booking.drinks4]:
+            if drink:
+                total_drinks_cost += drink.drinks_cost * number_of_guests
+
+        # Calculate the costs for entertainment
+        total_entertainment_cost = 0
+        for entertainment in [booking.entertainment1, booking.entertainment2, booking.entertainment3]:
+            if entertainment:
+                total_entertainment_cost += entertainment.entertainment_cost
+
+        # Calculate the cost for photography
+        total_photography_cost = 0
+        if booking.photography:
+            total_photography_cost = booking.photography.photography_cost
+
+        # Venue cost (assuming it's a fixed cost per booking)
+        venue_cost = booking.venue_name.cost_per_day
+
+        # Calculate the grand total
+        booking.grand_total = (
+            total_dishes_cost +
+            total_drinks_cost +
+            total_entertainment_cost +
+            total_photography_cost +
+            venue_cost
+        )
+
+    # Pass the bookings with calculated grand_total to the template
+    return render(request, 'admin_booking_payment_page2.html', {'booking': bookings, 'creditcards':creditcards})

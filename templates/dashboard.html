@@ -1,8 +1,6 @@
 {% load static %}
 
-
 {% if user.is_authenticated and user.is_superuser %}
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -231,17 +229,26 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                             aria-expanded="false" aria-controls="icons">
                             <i class="mdi mdi-diamond-stone"></i>
-                            <span class="nav-text">Bookings</span> <b class="caret"></b>
+                            <span class="nav-text">Payment History</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="material-icon.html">
-                                  <span class="nav-text">All Bookings</span>
+                                <a class="sidenav-item-link" href="{% url 'admin_booking_payment_page' %}">
+                                  <span class="nav-text">Mobile Money</span>
                                 </a>
                               </li>
-        
+                            </div>
+                          </ul>
+
+                          <ul class="collapse " id="icons" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'admin_booking_payment_page2' %}">
+                                  <span class="nav-text">Credit Cards</span>
+                                </a>
+                              </li>
                             </div>
                           </ul>
                         </li>
@@ -266,28 +273,9 @@
                         </li>
 
 
-                        
+                      
         
-                        <!-- <li class="has-sub ">
-                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#forms"
-                            aria-expanded="false" aria-controls="forms">
-                            <i class="mdi mdi-email-mark-as-unread"></i>
-                            <span class="nav-text">Notification</span> <b class="caret"></b>
-                          </a>
-        
-                          <ul class="collapse " id="forms" data-parent="#sidebar-menu">
-                            <div class="sub-menu">
-                              <li class="">
-                                <a class="sidenav-item-link" href="basic-input.html">
-                                  <span class="nav-text">All Notification</span>
-                                </a>
-                              </li>
-                            </div>
-                          </ul>
-                        </li> -->
-        
-                        
-        
+  
                         <li class="has-sub active expand">
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tables"
                             aria-expanded="false" aria-controls="tables">
@@ -305,8 +293,12 @@
                             </div>
                           </ul>
                         </li>
+
+                        
         
                   </div>
+
+                 
                 </aside>
 
 
@@ -379,8 +371,8 @@
                     <div class="col-xl-3 col-sm-6">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">71,503</h2>
-                          <p>Online Signups</p>
+                          <h2 class="mb-1" style="font-weight: bold; font-size: 30px;">{{available_venue}}</h2>
+                          <h2>Available Venues</h2>
                           <div class="chartjs-wrapper">
                             <canvas id="barChart"></canvas>
                           </div>
@@ -390,8 +382,8 @@
                     <div class="col-xl-3 col-sm-6">
                       <div class="card card-mini  mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">9,503</h2>
-                          <p>New Visitors Today</p>
+                          <h2 class="mb-1" style="font-weight: bold; font-size: 30px;">{{events}}</h2>
+                          <h2>Available Events</h2>
                           <div class="chartjs-wrapper">
                             <canvas id="dual-line"></canvas>
                           </div>
@@ -401,8 +393,8 @@
                     <div class="col-xl-3 col-sm-6">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">71,503</h2>
-                          <p>Monthly Total Order</p>
+                          <h2 class="mb-1">{{books}}</h2>
+                          <h2>Bookings</h2>
                           <div class="chartjs-wrapper">
                             <canvas id="area-chart"></canvas>
                           </div>
@@ -412,8 +404,15 @@
                     <div class="col-xl-3 col-sm-6">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">9,503</h2>
-                          <p>Total Revenue This Year</p>
+                          <h2 class="mb-1">{{mobile}}</h2>
+                          <h2>Mobile Payment</h2>
+                          <div class="chartjs-wrapper">
+                            <canvas id="line"></canvas>
+                          </div>
+
+                          <hr>
+                          <h2 class="mb-1">{{card}}</h2>
+                          <h2>Credit Card Payment</h2>
                           <div class="chartjs-wrapper">
                             <canvas id="line"></canvas>
                           </div>
@@ -480,7 +479,6 @@
 </body>
 </html>
 
-
 {% else %}
-{% include 'users.html' %}
+{% include 'users.html' %} 
 {% endif %}

@@ -1,5 +1,7 @@
 from datetime import timezone
 from django.db import models
+from django.utils import timezone  
+
 
 # Create your models here.
 class Event(models.Model):
@@ -52,7 +54,6 @@ class Drinks(models.Model):
         return self.drinks_name
     
 
-
 class Booking_Venue(models.Model):
     venue_name = models.ForeignKey(Venue, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -71,7 +72,6 @@ class Booking_Venue(models.Model):
     
     def __str__(self):
         return str(self.venue_name)
-
 
 
 
@@ -137,3 +137,29 @@ class Book_Event(models.Model):
 
     def __str__(self):
         return str(self.venue_name)
+    
+
+
+class Afrimoney(models.Model):
+    user_name = models.CharField(max_length=50, null=True)
+    phone_number = models.IntegerField()
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    pin = models.IntegerField()
+    date = models.DateTimeField(default=timezone.now)  
+
+    def __str__(self):
+        return str(self.phone_number)
+    
+
+class Creditcard(models.Model):
+    card_number = models.IntegerField(null=True)
+    name_on_card= models.CharField(max_length=50, null=True)
+    month = models.IntegerField(null=True)
+    year = models.IntegerField(null=True) 
+    cvv = models.IntegerField(null=True)
+    date = models.DateTimeField(default=timezone.now) 
+
+    def __str__(self):
+        return str(self.name_on_card)
+    
+

@@ -50,10 +50,22 @@ urlpatterns = [
 
     path('print_receipt/<int:booking_id>/', views.print_receipt, name='print_receipt'),
 
+    path('receipt/<int:booking_id>/', views.receipt, name='receipt'),
+
     path('booking_payment/', views.booking_payment, name='booking_payment'),
 
-   path('booking_payment_page/', views.booking_payment_page, name='booking_payment_page'),
-    path('booking_payment/<int:booking_id>/', views.booking_payment_page, name='booking_payment_process'),
+    path('booking_payment_page/', views.booking_payment_page, name='booking_payment_page'),
+    path('booking_payment_process/<int:booking_id>/', views.booking_payment_process, name='booking_payment_process'),
+
+    path('booking_payment_page2/', views.booking_payment_page2, name='booking_payment_page2'),
+
+
+    path('admin_booking_payment_page/', views.admin_booking_payment_page, name='admin_booking_payment_page'),
+    path('admin_afrimoney/<int:pk>/', views.admin_afrimoney_detail, name='admin_afrimoney_detail'),
+
+    path('admin_booking_payment_page2/', views.admin_booking_payment_page2, name='admin_booking_payment_page2'),
+ 
+
 
     
 

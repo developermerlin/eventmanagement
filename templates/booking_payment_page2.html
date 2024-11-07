@@ -341,17 +341,29 @@
             <h1 style="color: black; margin-top: -20px; margin-bottom: 15px; text-align: center;">Transaction Process</h1>
             <form action="" method="post">
               {% csrf_token %}
-              <label for="" style="color: black; font-size: 20px;">Enter Full Name</label>
-              <input type="text" class="form-control p-4" name="user_name" placeholder="Enter Name" style="border: 2px solid black; font-size: 20px;">
+              <label for="" style="color: black; font-size: 20px;">Card Number:</label>
+              <input type="number" class="form-control p-4" name="card_number" placeholder="0000-0000-0000-0000" style="border: 2px solid black; font-size: 20px;">
 
-              <label for="" style="color: black; font-size: 20px;">Enter Your Wallet Phone Number</label>
-              <input type="number" class="form-control p-4" name="phone_number" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
+              <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Name on Card:</label>
+              <input type="text" class="form-control p-4" name="name_on_card" placeholder="Sallieu Sesay" style="border: 2px solid black; font-size: 20px;">
   
-              <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Amount you want to send</label>
-              <input type="text" class="form-control p-4" name="amount" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Month</label>
+                    <input type="number" class="form-control p-4" name="month" placeholder="MM" style="border: 2px solid black; font-size: 20px;">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Year</label>
+                    <input type="number" class="form-control p-4" name="year" placeholder="YYYY" style="border: 2px solid black; font-size: 20px;">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" style="color: black; margin-top: 5px; font-size: 20px;">CVV</label>
+                    <input type="number" class="form-control p-4" name="cvv" placeholder="CVV" style="border: 2px solid black; font-size: 20px;">
+                  </div>
+                </div>
+              
   
-              <label for="" style="color: black; margin-top: 5px; font-size: 20px;">Wallet Pin</label>
-              <input type="number" class="form-control p-4" name="pin" placeholder="Enter Phone number" style="border: 2px solid black; font-size: 20px;">
+              
   
               <button type="submit" class="btn btn-success w-100 mt-3">Complete Transfer</button>
               <a href="{% url 'booking_payment' %}" class="btn btn-danger w-100 mt-2">Cancel Payment Process</a>

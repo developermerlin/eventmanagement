@@ -136,7 +136,7 @@
                           <ul class="collapse " id="app" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="">
+                                <a class="sidenav-item-link" href="{% url 'book_event' %}">
                                   <span class="nav-text">Events</span>
                                 </a>
                               </li>
@@ -174,7 +174,7 @@
                           <ul class="collapse " id="components1" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="{% url 'entertainment' %}">
+                                <a class="sidenav-item-link" href="{% url 'booking_history' %}">
                                   <span class="nav-text">booking history</span>
                                 </a>
                               </li>
@@ -210,7 +210,6 @@
 
           </div>
         </aside>
-
 
           <!-- ====================================
         ——— PAGE WRAPPER
@@ -293,13 +292,66 @@
 								<td style="font-size: 18px;">{{booking_venue.event}}</td>
                 <td style="font-size: 18px;">{{booking_venue.venue_name.contact}}</td>
                 <td style="font-size: 16px;">
-                  <a href="{% url 'available_venue_details' booking_venue.id%}" >
-                    Details
+                  <a href="{% url 'available_venue_details' booking_venue.id%}" class="btn btn-secondary" >
+                    View Venue Details
                   </a>
 
-                  <a class="btn btn-success" href="{% url 'delete_booking_venue' booking_venue.id%}" >
-                    Availability
-                  </a>
+                  <a id="childButton" href="#" class="btn btn-success" style="margin-left: 20px; pointer-events: none;">Available for Booking</a>
+
+
+                </td>
+
+                <!-- Parent Button -->
+<!-- <a id="availabilityButton" href="#" class="btn btn-success" style="margin-left: 20px;">Availability</a> -->
+
+
+
+<script>
+  const button = document.getElementById("childButton");
+
+  // Function to load the saved state from localStorage on page load
+  function loadButtonState() {
+      const savedState = localStorage.getItem("buttonState");
+
+      if (savedState === "notAvailable") {
+          setButtonToNotAvailable();
+      } else {
+          setButtonToAvailable();
+      }
+  }
+
+  // Function to set the button to "Not Available" state
+  function setButtonToNotAvailable() {
+      button.classList.remove("btn-success");
+      button.classList.add("btn-danger");
+      button.textContent = "Not Available for Booking";
+      localStorage.setItem("buttonState", "notAvailable");
+  }
+
+  // Function to set the button to "Available" state
+  function setButtonToAvailable() {
+      button.classList.remove("btn-danger");
+      button.classList.add("btn-success");
+      button.textContent = "Available for Booking";
+      localStorage.setItem("buttonState", "Available for Booking");
+  }
+
+  // Event listener to toggle the button state on click
+  button.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent page reload if button is an <a> tag
+
+      if (button.classList.contains("btn-success")) {
+          setButtonToNotAvailable();
+      } else {
+          setButtonToAvailable();
+      }
+  });
+
+  // Load the saved state on page load
+  document.addEventListener("DOMContentLoaded", loadButtonState);
+</script> 
+
+                
                 </td>
                 
 
