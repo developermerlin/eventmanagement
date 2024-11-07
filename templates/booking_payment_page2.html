@@ -274,7 +274,7 @@
           <div class="row mt-5">
            
 
-            <div class="col-md-6"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-left: -10px;">
+            <!-- <div class="col-md-6"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-left: -10px;">
               {% for item in booking %}
                 <h5 style="color: black;">Customer: {{ item.customer }}</h5>
                 <h5 style="color: black;" class="mt-2">Venue: {{ item.venue_name }}</h5>
@@ -333,11 +333,11 @@
 
             {% endfor %}
 
-             </div>
+             </div> -->
              
 
              
-           <div class="col-md-6"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-right: -15px;">
+           <div class="col-md-6 offset-md-3"  style="border: 2px solid black; border-radius: 10px; padding: 50px; margin-right: -15px;">
             <h1 style="color: black; margin-top: -20px; margin-bottom: 15px; text-align: center;">Transaction Process</h1>
             <form action="" method="post">
               {% csrf_token %}

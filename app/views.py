@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Booking_Venue, Venue, Event, Dish, Entertainment, Photography, Drinks,Book_Event,Afrimoney,Creditcard
 from django.contrib import messages
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -15,13 +16,20 @@ def dashboard(request):
     events = Event.objects.all().count()
     mobile = Afrimoney.objects.all().count()
     card = Creditcard.objects.all().count()
+    food = Dish.objects.all().count()
+    drinks = Drinks.objects.all().count()
+    users = User.objects.all().count()
     
     context = {
         'available_venue':available_venue,
         'books':books,
         'events':events,
         'mobile':mobile,
+        'food':food,
+        'drinks':drinks,
+        'users':users,
         'card':card,
+        # 'card':card,
     }
     return render(request, 'dashboard.html' ,context)
 

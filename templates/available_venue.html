@@ -183,24 +183,7 @@
                           </ul>
                         </li>
         
-                        <li class="has-sub ">
-                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
-                            aria-expanded="false" aria-controls="app">
-                            <i class="mdi mdi-pencil-box-multiple"></i>
-                            <span class="nav-text">Notification</span> <b class="caret"></b>
-                          </a>
-        
-                          <ul class="collapse " id="app1" data-parent="#sidebar-menu">
-                            <div class="sub-menu">
-                              <li class="">
-                                <a class="sidenav-item-link" href="{% url 'photography' %}">
-                                  <span class="nav-text">All Notification</span>
-                                </a>
-                              </li>
-        
-                            </div>
-                          </ul>
-                        </li>
+                   
 
         
                   </div>
@@ -259,113 +242,100 @@
 
 
 
-<div class="row">
-	<div class="col-12">
-		<div class="card card-default">
-			<div class="card-header card-header-border-bottom d-flex justify-content-between">
-				<h2>Booking Venues</h2>
-                
-               
-			</div>
-
-			<div class="card-body" style="padding: -100px;">
-				<div class="">
-					<table  class="table nowrap" style="width:100%">
-						<thead>
-							<tr>
-								<th style="font-size: 16px;">Venue Name</th>
-                <th style="font-size: 16px;">Address</th>
-                <th style="font-size: 16px;">Event of Venue</th>
-                <th style="font-size: 16px;">Contact</th>
-								<th style="font-size: 16px;">Action</th>
-								
-							</tr>
-						</thead>
-
-						<tbody>
-                {% for booking_venue in booking_venues %}      
-							<tr style="font-size: 15px; color:rgb(45, 41, 41);">
-								<td style="font-size: 18px;">
-                  {{booking_venue.venue_name}}
-                </td>
-                <td style="font-size: 18px;">{{ booking_venue.venue_name.address }}</td>
-								<td style="font-size: 18px;">{{booking_venue.event}}</td>
-                <td style="font-size: 18px;">{{booking_venue.venue_name.contact}}</td>
-                <td style="font-size: 16px;">
-                  <a href="{% url 'available_venue_details' booking_venue.id%}" class="btn btn-secondary" >
-                    View Venue Details
-                  </a>
-
-                  <a id="childButton" href="#" class="btn btn-success" style="margin-left: 20px; pointer-events: none;">Available for Booking</a>
-
-
-                </td>
-
-                <!-- Parent Button -->
-<!-- <a id="availabilityButton" href="#" class="btn btn-success" style="margin-left: 20px;">Availability</a> -->
-
-
-
-<script>
-  const button = document.getElementById("childButton");
-
-  // Function to load the saved state from localStorage on page load
-  function loadButtonState() {
-      const savedState = localStorage.getItem("buttonState");
-
-      if (savedState === "notAvailable") {
-          setButtonToNotAvailable();
-      } else {
-          setButtonToAvailable();
-      }
-  }
-
-  // Function to set the button to "Not Available" state
-  function setButtonToNotAvailable() {
-      button.classList.remove("btn-success");
-      button.classList.add("btn-danger");
-      button.textContent = "Not Available for Booking";
-      localStorage.setItem("buttonState", "notAvailable");
-  }
-
-  // Function to set the button to "Available" state
-  function setButtonToAvailable() {
-      button.classList.remove("btn-danger");
-      button.classList.add("btn-success");
-      button.textContent = "Available for Booking";
-      localStorage.setItem("buttonState", "Available for Booking");
-  }
-
-  // Event listener to toggle the button state on click
-  button.addEventListener("click", function(event) {
-      event.preventDefault(); // Prevent page reload if button is an <a> tag
-
-      if (button.classList.contains("btn-success")) {
-          setButtonToNotAvailable();
-      } else {
-          setButtonToAvailable();
-      }
-  });
-
-  // Load the saved state on page load
-  document.addEventListener("DOMContentLoaded", loadButtonState);
-</script> 
-
-                
-                </td>
-                
-
-							</tr>
-                {% endfor %}    
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</div>
+              <div class="row">
+                <div class="col-12">
+                    <div class="card card-default">
+                        <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                            <h2>Booking Venues</h2>
+                        </div>
+            
+                        <div class="card-body" style="padding: -100px;">
+                            <div class="">
+                                <table class="table nowrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="font-size: 16px;">Venue Name</th>
+                                            <th style="font-size: 16px;">Address</th>
+                                            <th style="font-size: 16px;">Event of Venue</th>
+                                            <th style="font-size: 16px;">Contact</th>
+                                            <th style="font-size: 16px;">Action</th>
+                                        </tr>
+                                    </thead>
+            
+                                    <tbody>
+                                        {% for booking_venue in booking_venues %}
+                                        <tr style="font-size: 15px; color:rgb(45, 41, 41);">
+                                            <td style="font-size: 18px;">{{ booking_venue.venue_name }}</td>
+                                            <td style="font-size: 18px;">{{ booking_venue.venue_name.address }}</td>
+                                            <td style="font-size: 18px;">{{ booking_venue.event }}</td>
+                                            <td style="font-size: 18px;">{{ booking_venue.venue_name.contact }}</td>
+                                            <td style="font-size: 16px;">
+                                                <a href="{% url 'available_venue_details' booking_venue.id %}" class="btn btn-secondary">
+                                                    View Venue Details
+                                                </a>
+            
+                                                <!-- Unique ID for each child button -->
+                                                <a id="childButton-{{ booking_venue.id }}" href="#" class="btn btn-success childButton" style="margin-left: 20px; pointer-events: none;">
+                                                    Available for Booking
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Function to set button to "Not Available" state
+                    function setButtonToNotAvailable(button) {
+                        button.classList.remove("btn-success");
+                        button.classList.add("btn-danger");
+                        button.textContent = "Not Available for Booking";
+                    }
+            
+                    // Function to set button to "Available" state
+                    function setButtonToAvailable(button) {
+                        button.classList.remove("btn-danger");
+                        button.classList.add("btn-success");
+                        button.textContent = "Available for Booking";
+                    }
+            
+                    // Function to load and set state for each child button
+                    function loadButtonState(button, venueId) {
+                        const savedState = localStorage.getItem("buttonState-" + venueId);
+                        if (savedState === "notAvailable") {
+                            setButtonToNotAvailable(button);
+                        } else {
+                            setButtonToAvailable(button);
+                        }
+                    }
+            
+                    // Loop through each child button and apply the saved state and event listener
+                    document.querySelectorAll('.childButton').forEach(button => {
+                        const venueId = button.id.split('-')[1]; // Extract venue ID from the button's ID
+                        loadButtonState(button, venueId);
+            
+                        // Event listener to toggle the button state on click
+                        button.addEventListener("click", function(event) {
+                            event.preventDefault(); // Prevent page reload if button is an <a> tag
+            
+                            if (button.classList.contains("btn-success")) {
+                                setButtonToNotAvailable(button);
+                                localStorage.setItem("buttonState-" + venueId, "notAvailable");
+                            } else {
+                                setButtonToAvailable(button);
+                                localStorage.setItem("buttonState-" + venueId, "available");
+                            }
+                        });
+                    });
+                });
+            </script>
+            
 
 
 

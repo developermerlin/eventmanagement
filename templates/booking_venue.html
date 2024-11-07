@@ -103,7 +103,7 @@
                     </div>
         
                     <!-- begin sidebar scrollbar -->
-                    <div class="" data-simplebar style="height: 100%;">
+                    <div class="" data-simplebar style="height: 100%; margin-top: -20px;">
                       <!-- sidebar menu -->
                       <ul class="nav sidebar-inner" id="sidebar-menu">
                         <li class="has-sub ">
@@ -188,7 +188,25 @@
                           </ul>
                         </li>
         
-                        
+                        <li class="has-sub ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
+                            aria-expanded="false" aria-controls="app">
+                            <i class="mdi mdi-pencil-box-multiple"></i>
+                            <span class="nav-text">photography</span> <b class="caret"></b>
+                          </a>
+        
+                          <ul class="collapse " id="app1" data-parent="#sidebar-menu">
+                            <div class="sub-menu">
+                              <li class="">
+                                <a class="sidenav-item-link" href="{% url 'photography' %}">
+                                  <span class="nav-text">All Photography</span>
+                                </a>
+                              </li>
+        
+                            </div>
+                          </ul>
+                        </li>
+
                         <li class="has-sub ">
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
                             aria-expanded="false" aria-controls="components">
@@ -212,35 +230,24 @@
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                             aria-expanded="false" aria-controls="icons">
                             <i class="mdi mdi-diamond-stone"></i>
-                            <span class="nav-text">Bookings</span> <b class="caret"></b>
+                            <span class="nav-text">Payment History</span> <b class="caret"></b>
                           </a>
         
                           <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="material-icon.html">
-                                  <span class="nav-text">All Bookings</span>
+                                <a class="sidenav-item-link" href="{% url 'admin_booking_payment_page' %}">
+                                  <span class="nav-text">Mobile Money</span>
                                 </a>
                               </li>
-        
                             </div>
                           </ul>
-                        </li>
-        
-                        
-        
-                        <li class="has-sub ">
-                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#forms"
-                            aria-expanded="false" aria-controls="forms">
-                            <i class="mdi mdi-email-mark-as-unread"></i>
-                            <span class="nav-text">Notification</span> <b class="caret"></b>
-                          </a>
-        
-                          <ul class="collapse " id="forms" data-parent="#sidebar-menu">
+
+                          <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="basic-input.html">
-                                  <span class="nav-text">All Notification</span>
+                                <a class="sidenav-item-link" href="{% url 'admin_booking_payment_page2' %}">
+                                  <span class="nav-text">Credit Cards</span>
                                 </a>
                               </li>
                             </div>
@@ -248,24 +255,28 @@
                         </li>
         
                         <li class="has-sub ">
-                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app1"
-                            aria-expanded="false" aria-controls="app">
-                            <i class="mdi mdi-pencil-box-multiple"></i>
-                            <span class="nav-text">photography</span> <b class="caret"></b>
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#componentss"
+                            aria-expanded="false" aria-controls="components">
+                            <i class="mdi mdi-folder-multiple-outline"></i>
+                            <span class="nav-text">Booking Venues</span> <b class="caret"></b>
                           </a>
         
-                          <ul class="collapse " id="app1" data-parent="#sidebar-menu">
+                          <ul class="collapse " id="componentss" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="{% url 'photography' %}">
-                                  <span class="nav-text">All Photography</span>
+                                <a class="sidenav-item-link" href="{% url 'booking_venue' %}">
+                                  <span class="nav-text"> booking venues</span>
                                 </a>
                               </li>
         
                             </div>
                           </ul>
                         </li>
+
+
+                      
         
+  
                         <li class="has-sub active expand">
                           <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tables"
                             aria-expanded="false" aria-controls="tables">
@@ -276,21 +287,26 @@
                           <ul class="collapse show" id="tables" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                               <li class="">
-                                <a class="sidenav-item-link" href="basic-tables.html">
+                                <a class="sidenav-item-link" href="{% url 'admin_booking_history' %}">
                                   <span class="nav-text">Booking History</span>
                                 </a>
                               </li>
                             </div>
                           </ul>
                         </li>
+
+                        
         
                   </div>
+
+                 
                 </aside>
 
 
 
           </div>
         </aside>
+
 
 
           <!-- ====================================
@@ -341,131 +357,109 @@
 
 
 
-<div class="row">
-	<div class="col-12">
-		<div class="card card-default">
-			<div class="card-header card-header-border-bottom d-flex justify-content-between">
-				<h2>Booking Venues</h2>
-                
-                <div class="container">
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col-md-12" style="margin-left: 890px;">
-                            <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                <span class="ms-1">Add Venue</span> 
-                            </a>
+              <div class="row">
+                <div class="col-12">
+                    <div class="card card-default">
+                        <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                            <h2>Booking Venues</h2>
+                            <div class="container">
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-12" style="margin-left: 890px;">
+                                        <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <span class="ms-1">Add Venue</span> 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="card-body" style="padding: -200px;">
+                            <div class="basic-data-table">
+                                <table id="basic-data-table" class="table nowrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="font-size: 16px; text-align: center;">No</th>
+                                            <th style="font-size: 16px; text-align: center;">Venue Name</th>
+                                            <th style="font-size: 16px; text-align: center;">Event</th>
+                                            <th style="font-size: 16px; text-align: center;">Cost Per Day</th>
+                                            <th style="font-size: 16px; text-align: center;">Action</th>
+                                        </tr>
+                                    </thead>
+            
+                                    <tbody>
+                                        {% for booking_venue in booking_venues %}
+                                        <tr style="font-size: 15px; color:rgb(45, 41, 41);">
+                                            <td style="font-size: 18px;">{{ forloop.counter }}</td>
+                                            <td>{{ booking_venue.venue_name }}</td>
+                                            <td style="font-size: 18px;">{{ booking_venue.event }}</td>
+                                            <td style="font-size: 18px;">Nle{{ booking_venue.cost_per_day }}</td>
+                                            <td style="font-size: 18px;">
+                                                <a href="{% url 'edit_booking_venue' booking_venue.id %}">
+                                                    <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 20px;"></i>
+                                                </a>
+                                                <a href="{% url 'delete_booking_venue' booking_venue.id %}">
+                                                    <i class="fas fa-trash" style="color: rgb(182, 10, 10);"></i>
+                                                </a>
+                                                <!-- Unique ID for each button -->
+                                                <a id="availabilityButton-{{ booking_venue.id }}" href="#" class="btn" style="margin-left: 20px;">Available for booking</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-			</div>
-
-			<div class="card-body" style="padding: -200px;">
-				<div class="basic-data-table">
-					<table id="basic-data-table" class="table nowrap" style="width:100%">
-						<thead>
-							<tr>
-								<th style="font-size: 16px; text-align: center;">No</th>
-								<th style="font-size: 16px; text-align: center;">Venue Name</th>
-                <th style="font-size: 16px; text-align: center;">Event</th>
-                <th style="font-size: 16px; text-align: center;">Cost Per Day</th>
-								<th style="font-size: 16px; text-align: center;">Action</th>
-								
-							</tr>
-						</thead>
-
-						<tbody>
-                {% for booking_venue in booking_venues %}      
-							<tr style="font-size: 15px; color:rgb(45, 41, 41);">
-								<td style="font-size: 18px;">{{forloop.counter}}</td>
-								<td>
-                  {{booking_venue.venue_name}}
-                </td>
-								<td style="font-size: 18px;">{{booking_venue.event}}</td>
-                <td style="font-size: 18px;">Nle{{booking_venue.cost_per_day}}</td>
-                <td style="font-size: 18px;">
-                  <a href="{% url 'edit_booking_venue' booking_venue.id%}" >
-                    <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 20px;"></i>
-                  </a>
-
-                  <a href="{% url 'delete_booking_venue' booking_venue.id%}" >
-                    <i class="fas fa-trash" style="color: rgb(182, 10, 10);"></i>
-                  </a>
-
-                  <a id="availabilityButton" href="#" class="btn" style="margin-left: 20px;">Availability</a>
-                </td>
-
-                <!-- Parent Button -->
-
-
-							</tr>
-                {% endfor %}    
-						</tbody>
-					</table>
-
-
-
-
-          
-          
-
-
-
-      <script>
-              const button = document.getElementById("availabilityButton");
-          
-              // Function to load the saved state from localStorage on page load
-              function loadButtonState() {
-                  const savedState = localStorage.getItem("buttonState");
-          
-                  if (savedState === "notAvailable") {
-                      setButtonToNotAvailable();
-                  } else {
-                      setButtonToAvailable();
-                  }
-              }
-          
-              // Function to set the button to "Not Available" state
-              function setButtonToNotAvailable() {
-                  button.classList.remove("btn-success");
-                  button.classList.add("btn-danger");
-                  button.textContent = "Not Available for booking";
-                  localStorage.setItem("buttonState", "notAvailable");
-              }
-          
-              // Function to set the button to "Available" state
-              function setButtonToAvailable() {
-                  button.classList.remove("btn-danger");
-                  button.classList.add("btn-success");
-                  button.textContent = "Available for booking";
-                  localStorage.setItem("buttonState", "available");
-              }
-          
-              // Event listener to toggle the button state on click
-              button.addEventListener("click", function(event) {
-                  event.preventDefault(); // Prevent page reload if button is an <a> tag
-          
-                  if (button.classList.contains("btn-success")) {
-                      setButtonToNotAvailable();
-                  } else {
-                      setButtonToAvailable();
-                  }
-              });
-          
-              // Load the saved state on page load
-              document.addEventListener("DOMContentLoaded", loadButtonState);
-          </script> 
-          
-
-
-
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Function to load and set state for each button
+                    function loadButtonState(button, venueId) {
+                        const savedState = localStorage.getItem("buttonState-" + venueId);
+                        if (savedState === "notAvailable") {
+                            setButtonToNotAvailable(button);
+                        } else {
+                            setButtonToAvailable(button);
+                        }
+                    }
+            
+                    // Set button to "Not Available" state
+                    function setButtonToNotAvailable(button) {
+                        button.classList.remove("btn-success");
+                        button.classList.add("btn-danger");
+                        button.textContent = "Not Available for booking";
+                    }
+            
+                    // Set button to "Available" state
+                    function setButtonToAvailable(button) {
+                        button.classList.remove("btn-danger");
+                        button.classList.add("btn-success");
+                        button.textContent = "Available for booking";
+                    }
+            
+                    // Loop through each button and add event listeners
+                    document.querySelectorAll('[id^="availabilityButton-"]').forEach(button => {
+                        const venueId = button.id.split('-')[1];
+                        loadButtonState(button, venueId);
+            
+                        button.addEventListener("click", function(event) {
+                            event.preventDefault(); // Prevent page reload if button is an <a> tag
+            
+                            if (button.classList.contains("btn-success")) {
+                                setButtonToNotAvailable(button);
+                                localStorage.setItem("buttonState-" + venueId, "notAvailable");
+                            } else {
+                                setButtonToAvailable(button);
+                                localStorage.setItem("buttonState-" + venueId, "available");
+                            }
+                        });
+                    });
+                });
+            </script>
+            
 
 
 
