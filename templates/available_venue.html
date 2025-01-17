@@ -270,12 +270,12 @@
                                             <td style="font-size: 18px;">{{ booking_venue.event }}</td>
                                             <td style="font-size: 18px;">{{ booking_venue.venue_name.contact }}</td>
                                             <td style="font-size: 16px;">
-                                                <a href="{% url 'available_venue_details' booking_venue.id %}" class="btn btn-secondary">
-                                                    View Venue Details
+                                                <a href="{% url 'available_venue_details' booking_venue.id %}" class="btn btn-secondary" style="margin-left: -20px;">
+                                                     Venue Details
                                                 </a>
             
                                                 <!-- Unique ID for each child button -->
-                                                <a id="childButton-{{ booking_venue.id }}" href="#" class="btn btn-success childButton" style="margin-left: 20px; pointer-events: none;">
+                                                <a id="childButton-{{ booking_venue.id }}" href="#" class="btn btn-success childButton" style="margin-left: -2px; margin-right: -60px; pointer-events: none;">
                                                     Available for Booking
                                                 </a>
                                             </td>
